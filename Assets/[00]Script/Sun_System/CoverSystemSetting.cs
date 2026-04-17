@@ -15,5 +15,8 @@ public class CoverSystemSetting : ScriptableObject
     public float HotGaugeIncreaseRate = 5; //per second
     public float HotGaugeDecreaseRate = 3; //per second
 
+    [Header("Debug part")]
+    public Color DebugColor = Color.olive;
+
     
 }

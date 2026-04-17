@@ -16,7 +16,6 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 0
-  MaxHotGauge: 100
-  CurrentHotGauge: 0
+  SampleResolution: 6
   HotGaugeIncreaseRate: 5
   HotGaugeDecreaseRate: 3

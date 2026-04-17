@@ -3,8 +3,8 @@ using UnityEngine.Rendering.Universal;
 
 public class CoverSystem : MonoBehaviour
 {
-    public CoverSystemSetting coverSystemSetting;
-    public int SampleResolution => coverSystemSetting != null ? coverSystemSetting.SampleResolution : 3;
+    public CoverSystemSetting _cfg;
+    public int SampleResolution => _cfg != null ? _cfg.SampleResolution : 3;
     private Collider2D _coverCollider;
 
     [Header("Debugging")]
@@ -18,7 +18,7 @@ public class CoverSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(coverSystemSetting.PlayerTag))
+        if (collision.CompareTag(_cfg.PlayerTag))
         {
             Debug.Log("Player entered the cover (partial)");
 
@@ -30,7 +30,7 @@ public class CoverSystem : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.CompareTag(coverSystemSetting.PlayerTag)) return;
+        if (!collision.CompareTag(_cfg.PlayerTag)) return;
 
         float percentage = GetOverlapPercentage(collision);
         
@@ -55,7 +55,7 @@ public class CoverSystem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(coverSystemSetting.PlayerTag))
+        if (collision.CompareTag(_cfg.PlayerTag))
         {
             Debug.Log("Player exited the cover");
             
@@ -134,7 +134,7 @@ public class CoverSystem : MonoBehaviour
     {
         if (!DebugDrawGizmos) return;
 
-        Gizmos.color = Color.cyan;
+        Gizmos.color = _cfg.DebugColor;
 
         var colliders = GetComponents<Collider2D>();
         foreach (var col in colliders)
