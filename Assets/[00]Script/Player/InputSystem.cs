@@ -5,12 +5,10 @@ public class InputSystem : MonoBehaviour
     [Header("Controls")]
     [SerializeField] private KeyCode m_RightKey = KeyCode.D;
     [SerializeField] private KeyCode m_LeftKey = KeyCode.A;
-    [SerializeField] private KeyCode m_jump = KeyCode.Space;
 
     // Private members
     private Vector2 m_InputVector;
     private float m_XInput;
-    private float m_YInput;
 
     public Vector2 InputVector => m_InputVector;
 

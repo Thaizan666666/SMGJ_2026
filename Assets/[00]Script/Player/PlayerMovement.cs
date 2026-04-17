@@ -32,17 +32,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputX == 0)
         {
-            // ปล่อยปุ่ม → Decelerate
             accel = m_Deceleration;
         }
         else if (Mathf.Sign(inputX) != Mathf.Sign(velocityX) && velocityX != 0)
         {
-            // เปลี่ยนทิศ → Skid
             accel = m_SkidDeceleration;
         }
         else
         {
-            // เดินหน้าปกติ → Accelerate
             accel = m_Acceleration;
         }
 
