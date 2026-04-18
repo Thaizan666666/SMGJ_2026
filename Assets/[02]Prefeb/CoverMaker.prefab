@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SunRay
   _cfg: {fileID: 11400000, guid: 12363d87780dc5d4098d418c7c535ef1, type: 2}
-  DebugDrawGizmos: 1
+  DebugDrawGizmos: 0
 --- !u!114 &2842010140169536565
 MonoBehaviour:
   m_ObjectHideFlags: 0

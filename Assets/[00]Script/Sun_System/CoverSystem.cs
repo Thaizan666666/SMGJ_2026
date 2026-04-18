@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -33,7 +34,7 @@ public class CoverSystem : MonoBehaviour
         if (!collision.CompareTag(_cfg.PlayerTag)) return;
 
         float percentage = GetOverlapPercentage(collision);
-        
+        HotGauge heatguage = collision.GetComponent<HotGauge>();
 
         if (IsPlayerFullyInside(collision))
         {
@@ -41,7 +42,10 @@ public class CoverSystem : MonoBehaviour
             // TODO:
             // - Decrease hot gauge by using coverSystemSetting.HotGaugeDecreaseRate per second
             // - You can use Time.deltaTime to make it frame-rate independent
-
+            if (heatguage != null)
+            {
+                heatguage._isIncover = true;
+            }
         }
         else
         {
@@ -49,7 +53,10 @@ public class CoverSystem : MonoBehaviour
             // TODO: ;
             // Do what designer want. I have percentage value, you can use it to decide how much to increase/decrease hot gauge.
             // using coverSystemSetting.HotGaugeIncreaseRate and coverSystemSetting.HotGaugeDecreaseRate
-
+            if (heatguage != null)
+            {
+                heatguage._isIncover = false;
+            }
         }
     }
 
