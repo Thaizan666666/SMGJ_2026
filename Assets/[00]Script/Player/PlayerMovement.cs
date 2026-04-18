@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -54,5 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Store actual physics velocity separately — not the same as max speed
         m_CharacterStats.currentVelocityX = newX;
+        Debug.LogWarning($"Max Speed :{m_MaxSpeed}");
     }
 }

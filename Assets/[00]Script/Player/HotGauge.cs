@@ -1,80 +1,78 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class HotGauge : MonoBehaviour
 {
-    [Header("SettingHetGauge")]
-    private float MaxGauge = 100f;
-    private float rateIncrease = 5f;
-    private float rateDecrease = 3f;
-    private float _CurrentGauge = 0;
+    [Header("Heat Gauge Settings")]
+    private float _maxGauge = 100f;
+    private float _rateIncrease = 5f;
+    private float _rateDecrease = 3f;
+
+    private float _currentGauge = 0f;
+    private bool _isGameOver = false;
 
     public UnityEvent OnGameOver;
-    private bool _isGameOver = false;
-    public float CurrentGauge
-    {
-        get => _CurrentGauge;
-        set => _CurrentGauge = value;
-    }
 
     public bool _isIncover;
 
-    private CharacterStats m_characterStats;
+    // Read-only property — other systems read this, only HotGauge writes it
+    public float CurrentGauge => _currentGauge;
 
-    private void Awake()
-    {
-        
-
-    }
-
-    private void RelinkStats() {
-        rateIncrease = m_characterStats.currentHeatIncreaseRate;
-        rateDecrease = m_characterStats.baseHeatDecreaseRate;
-        MaxGauge = m_characterStats.maxHeatGauge;
-    }
+    // CharacterStats drives all rates via RelinkStats
+    private CharacterStats _stats;
 
     private void Start()
     {
-        _CurrentGauge = 0f;
-
-        m_characterStats = GetComponent<CharacterStats>();
-
-        //connect to Character Stats for buff and debuff
-        rateIncrease = m_characterStats.currentHeatIncreaseRate + m_characterStats.baseHeatIncreaseRate;
-        rateDecrease = m_characterStats.baseHeatDecreaseRate;
-        MaxGauge = m_characterStats.maxHeatGauge;
+        _stats = GetComponent<CharacterStats>();
+        _currentGauge = 0f;
+        RelinkStats();
     }
+
     private void Update()
     {
-        if (_isGameOver) return ;
-        GameOver();
-        RelinkStats(); // get stats from Character stats
-        UpdateHetGauge();
-        Debug.Log(_CurrentGauge);
+        if (_isGameOver) return;
+
+        RelinkStats();
+        UpdateHeatGauge();
+        CheckGameOver();
+
+        Debug.Log($"Current Heat Gauge: {_currentGauge:F1}");
     }
-    private void GameOver()
+
+    // Pull current (post-modifier) rates from CharacterStats every frame
+    private void RelinkStats()
     {
-        if(_CurrentGauge >= MaxGauge)
+        _rateIncrease = _stats.currentHeatIncreaseRate;  // already has timed modifiers baked in
+        _rateDecrease = _stats.baseHeatDecreaseRate;
+        _maxGauge = _stats.maxHeatGauge;
+    }
+
+    private void UpdateHeatGauge()
+    {
+        if (!_isIncover)
+            _currentGauge += _rateIncrease * Time.deltaTime;
+        else
+            _currentGauge -= _rateDecrease * Time.deltaTime;
+
+        _currentGauge = Mathf.Clamp(_currentGauge, 0f, _maxGauge);
+
+        // Keep CharacterStats mirror in sync so EffectManager instant writes are visible
+        _stats.currentHotGauge = _currentGauge;
+    }
+
+    private void CheckGameOver()
+    {
+        if (_currentGauge >= _maxGauge)
         {
-            _isGameOver = true ;
+            _isGameOver = true;
             OnGameOver?.Invoke();
         }
     }
-    private void UpdateHetGauge()
-    {
-        if(!_isIncover)
-        {
-            _CurrentGauge += Time.deltaTime * rateIncrease;
-        }
-        else
-        {
-            _CurrentGauge -= Time.deltaTime * rateDecrease;
-        }
 
-        if(_CurrentGauge <= 0)
-        {
-            _CurrentGauge = 0;
-        }
+    // Called by EffectManager.ApplyInstant for HeatGauge instant effects
+    public void AddToGauge(float delta)
+    {
+        _currentGauge = Mathf.Clamp(_currentGauge + delta, 0f, _maxGauge);
+        _stats.currentHotGauge = _currentGauge;
     }
 }
