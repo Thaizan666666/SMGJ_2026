@@ -8,20 +8,22 @@ public class EffectManager : MonoBehaviour
     private CharacterStats _stats;
     private List<ActiveTimedEffect> _timedEffects = new();
 
-    void Awake() => _stats = GetComponent<CharacterStats>();
+    void Awake()
+    {
+        _stats = GetComponent<CharacterStats>();
+    }
 
     // ── Timed ─────────────────────────────────────────────────────────────
 
     public void ApplyTimed(TimedEffectData data)
     {
-        // Guard: don't apply if the data asset itself is null
         if (data == null)
         {
             Debug.LogWarning("ApplyTimed: TimedEffectData is null — did you forget to assign the ScriptableObject?", this);
             return;
         }
 
-        // Guard: skip any corrupted entries where Data is null
+        // Refresh duration if already active — value does not stack
         var existing = _timedEffects.Find(e => e != null && e.Data != null && e.Data.effectId == data.effectId);
         if (existing != null)
         {
@@ -42,6 +44,7 @@ public class EffectManager : MonoBehaviour
     void Update()
     {
         bool dirty = false;
+
         for (int i = _timedEffects.Count - 1; i >= 0; i--)
         {
             // Remove any corrupted entries silently
@@ -59,38 +62,32 @@ public class EffectManager : MonoBehaviour
                 dirty = true;
             }
         }
+
         if (dirty) Recalculate();
     }
 
+    // Sum all active timed modifiers across all their stat entries and push into CharacterStats
     private void Recalculate()
     {
-        float speedFlat = 0f, speedPct = 0f;
-        float heatRateFlat = 0f, heatRatePct = 0f;
+        var bundle = new StatModifierBundle();
 
-        foreach (var e in _timedEffects)
-        {
-            float sign = e.Data.mode == ModifierMode.Add ? 1f : -1f;
+        foreach (var effect in _timedEffects)
+            foreach (var entry in effect.Data.statEntries)
+                bundle.Add(entry);
 
-            switch (e.Data.stat)
-            {
-                case TimedStatType.Speed:
-                    speedFlat += e.Data.flatValue * sign;
-                    speedPct += e.Data.percentValue * sign;
-                    break;
-                case TimedStatType.HeatIncreaseRate:
-                    heatRateFlat += e.Data.flatValue * sign;
-                    heatRatePct += e.Data.percentValue * sign;
-                    break;
-            }
-        }
-
-        _stats.RecalculateTimed(speedFlat, speedPct, heatRateFlat, heatRatePct);
+        _stats.RecalculateTimed(bundle);
     }
 
-    // ── Instant ───────────────────────────────────────────────────────────
+    // ── Instant (one-shot, no undo) ───────────────────────────────────────
 
     public void ApplyInstant(InstantEffectData data)
     {
+        if (data == null)
+        {
+            Debug.LogWarning("ApplyInstant: InstantEffectData is null — did you forget to assign the ScriptableObject?", this);
+            return;
+        }
+
         float sign = data.mode == ModifierMode.Add ? 1f : -1f;
         float signed = data.flatValue * sign;
 

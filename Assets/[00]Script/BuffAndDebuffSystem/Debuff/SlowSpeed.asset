@@ -15,7 +15,4 @@ MonoBehaviour:
   effectId: 201
   displayName: SlowSpeed
   duration: 5
-  stat: 0
-  mode: 1
-  flatValue: 0
-  percentValue: 0.3
+  statEntries: []
