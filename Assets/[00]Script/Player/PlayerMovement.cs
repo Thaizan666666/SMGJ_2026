@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,12 +17,18 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D m_Rb;
     private InputSystem m_Input;
     private CharacterStats m_CharacterStats;
+    private MinigameCrab m_MinigameCrab;
 
     void Start()
     {
         m_Rb = GetComponent<Rigidbody2D>();
         m_Input = GetComponent<InputSystem>();
         m_CharacterStats = GetComponent<CharacterStats>();
+        m_MinigameCrab = FindFirstObjectByType<MinigameCrab>();
+        if (m_MinigameCrab == null)
+        {
+            m_MinigameCrab = new MinigameCrab();
+        }
         RelinkStats();
     }
 
@@ -38,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         RelinkStats();   // always read latest modded values first
 
-        if (!_IsHit)
+        if (CoditionMove())
             HandleMovement();
         else
             TickStun();
@@ -105,6 +112,18 @@ public class PlayerMovement : MonoBehaviour
         _cdstun = 0f;
         cd = duration;
         m_Rb.linearVelocity = new Vector2(0f, m_Rb.linearVelocity.y);
+    }
+
+    public bool CoditionMove()
+    {
+        if (_IsHit || m_MinigameCrab.isActive)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     // Read stun state from UI or other systems

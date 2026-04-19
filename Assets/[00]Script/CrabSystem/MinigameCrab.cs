@@ -5,7 +5,7 @@ public class MinigameCrab : MonoBehaviour
 {
     [Header("Settings")]
     public float fillAmount = 5f;        // เพิ่มต่อครั้งที่กดถูก
-    public float drainSpeed = 3f;        // ลดต่อวินาที
+    public float drainSpeed = 0f;        // ลดต่อวินาที
     public float maxValue = 100f;        // ค่าสูงสุดของหลอด
 
     [Header("UI")]
