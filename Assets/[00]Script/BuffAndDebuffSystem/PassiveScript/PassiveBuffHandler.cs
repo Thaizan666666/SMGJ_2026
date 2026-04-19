@@ -4,7 +4,7 @@ using static EffectEnums;
 
 public class PassiveBuffHandler : MonoBehaviour
 {
-    [Tooltip("Add as many threshold rules as you want here")]
+    [Tooltip("Drag PassiveEffect ScriptableObject assets here — one per rule")]
     public List<PassiveStatModifier> rules = new();
 
     private CharacterStats _stats;
@@ -25,6 +25,8 @@ public class PassiveBuffHandler : MonoBehaviour
 
         for (int i = 0; i < rules.Count; i++)
         {
+            if (rules[i] == null) continue;
+
             bool shouldBeActive = EvaluateRule(rules[i]);
             bool isActive = _activeRules.Contains(i);
 

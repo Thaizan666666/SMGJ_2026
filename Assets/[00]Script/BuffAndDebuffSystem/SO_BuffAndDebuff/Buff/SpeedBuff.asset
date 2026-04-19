@@ -15,7 +15,8 @@ MonoBehaviour:
   effectId: 101
   displayName: SpeedBuff
   duration: 5
-  stat: 0
-  mode: 0
-  flatValue: 0
-  percentValue: 1.5
+  statEntries:
+  - stat: 0
+    mode: 0
+    flatValue: 0
+    percentValue: 0

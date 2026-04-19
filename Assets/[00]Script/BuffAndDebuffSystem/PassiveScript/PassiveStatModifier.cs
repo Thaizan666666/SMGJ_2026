@@ -1,8 +1,8 @@
 using UnityEngine;
 using static EffectEnums;
 
-[System.Serializable]
-public class PassiveStatModifier
+[CreateAssetMenu(menuName = "Effects/PassiveEffect")]
+public class PassiveStatModifier : ScriptableObject
 {
     [Header("Condition")]
     [Tooltip("Which stat to watch as the trigger")]
@@ -10,7 +10,7 @@ public class PassiveStatModifier
 
     public ThresholdMode mode;
 
-    [Tooltip("Primary threshold (0.70 = 70% of max for gauge, or flat value for Speed)")]
+    [Tooltip("Primary threshold.\nHeatGauge: 0–1 percentage (0.70 = 70%).\nSpeed: flat units (e.g. 3 = 3 units/s).")]
     public float thresholdValue = 0.70f;
 
     [Tooltip("Only used when mode is Between — upper bound (must be > thresholdValue)")]

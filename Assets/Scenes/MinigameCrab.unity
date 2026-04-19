@@ -573,6 +573,8 @@ MonoBehaviour:
   Acceleration: 20
   Deceleration: 15
   SkidDeceleration: 30
+  MinSpeed: 1
+  MinHeatIncreaseRate: 0.5
   currentMaxSpeed: 0
   currentAcceleration: 0
   currentDeceleration: 0
@@ -595,6 +597,18 @@ PrefabInstance:
       propertyPath: minigamePanel
       value: 
       objectReference: {fileID: 1556908527}
+    - target: {fileID: 2737885839531857810, guid: 30691b974f0552a439c83ba463fc4512, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737885839531857810, guid: 30691b974f0552a439c83ba463fc4512, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737885839531857810, guid: 30691b974f0552a439c83ba463fc4512, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3537123264326674153, guid: 30691b974f0552a439c83ba463fc4512, type: 3}
       propertyPath: m_Name
       value: Crab
@@ -656,6 +670,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1651098625741876895, guid: 318dee9aa0f6cca419fa7da57348f0ac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2589207769596367592, guid: 318dee9aa0f6cca419fa7da57348f0ac, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -738,6 +756,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4272153144898315457, guid: 318dee9aa0f6cca419fa7da57348f0ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710174470385023135, guid: 318dee9aa0f6cca419fa7da57348f0ac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9094127128715245569, guid: 318dee9aa0f6cca419fa7da57348f0ac, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
