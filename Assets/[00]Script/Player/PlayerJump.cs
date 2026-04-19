@@ -20,10 +20,12 @@ public class PlayerJump : MonoBehaviour
     private bool m_IsGrounded;
     private bool m_IsJumping;
     private float m_JumpTimeCounter;
+    private PlayerMovement m_Movement;
 
     void Start()
     {
         m_Rb = GetComponent<Rigidbody2D>();
+        m_Movement = GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -45,7 +47,7 @@ public class PlayerJump : MonoBehaviour
     private void HandleJumpInput()
     {
         // กดปุ่ม Jump + อยู่บนพื้น → เริ่มกระโดด
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && m_IsGrounded)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && m_IsGrounded && !m_Movement._IsHit)
         {
             m_IsJumping = true;
             m_JumpTimeCounter = 0f;
@@ -53,7 +55,7 @@ public class PlayerJump : MonoBehaviour
         }
 
         // กดค้างอยู่ + ยังอยู่ในช่วง MaxJumpTime → เพิ่มแรงขึ้น
-        if (Keyboard.current.spaceKey.isPressed && m_IsJumping)
+        if (Keyboard.current.spaceKey.isPressed && m_IsJumping && !m_Movement._IsHit)
         {
             if (m_JumpTimeCounter < m_MaxJumpTime)
             {

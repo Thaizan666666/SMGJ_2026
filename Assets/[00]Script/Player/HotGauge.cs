@@ -36,7 +36,7 @@ public class HotGauge : MonoBehaviour
         UpdateHeatGauge();
         CheckGameOver();
 
-        Debug.Log($"Current Heat Gauge: {_currentGauge:F1}");
+        //Debug.Log($"Current Heat Gauge: {_currentGauge:F1}");
     }
 
     // Pull current (post-modifier) rates from CharacterStats every frame

@@ -9,6 +9,13 @@ public class PlayerMovement : MonoBehaviour
     private float m_Deceleration;
     private float m_SkidDeceleration;
 
+
+    [Header("StunSettings")]
+    [SerializeField] public bool _IsHit = false;
+    [SerializeField] public float cd = 3f;
+    private float cdstun = 0f;
+    
+
     private Rigidbody2D m_Rb;
     private InputSystem m_Input;
     private CharacterStats m_CharacterStats;
@@ -33,7 +40,14 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         RelinkStats();       // always read latest modded values first
-        HandleMovement();
+        if (!_IsHit)
+        {
+            HandleMovement();
+        }
+        else
+        {
+            TimeStun();
+        }
     }
 
     private void HandleMovement()
@@ -56,5 +70,29 @@ public class PlayerMovement : MonoBehaviour
         // Store actual physics velocity separately — not the same as max speed
         m_CharacterStats.currentVelocityX = newX;
         Debug.LogWarning($"Max Speed :{m_MaxSpeed}");
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Ball") && _IsHit == false)
+        {
+            _IsHit = true;
+            cdstun = 0f;
+            Debug.Log("Stun");
+        }
+    }
+
+    private void TimeStun()
+    {
+        if(cdstun <= cd)
+        {
+            cdstun += Time.deltaTime;
+            Debug.Log(cdstun);
+        }
+        else
+        {
+            _IsHit = false;
+            Debug.Log("Can Move");
+        }
     }
 }
