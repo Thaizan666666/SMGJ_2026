@@ -44,7 +44,7 @@ public class CoverSystem : MonoBehaviour
             // - You can use Time.deltaTime to make it frame-rate independent
             if (heatguage != null)
             {
-                heatguage._isIncover = true;
+                heatguage.IsInCover = true;
             }
         }
         else
@@ -55,7 +55,7 @@ public class CoverSystem : MonoBehaviour
             // using coverSystemSetting.HotGaugeIncreaseRate and coverSystemSetting.HotGaugeDecreaseRate
             if (heatguage != null)
             {
-                heatguage._isIncover = false;
+                heatguage.IsInCover = false;
             }
         }
     }

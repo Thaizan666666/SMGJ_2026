@@ -8,17 +8,19 @@ public class HotGauge : MonoBehaviour
     private float _rateIncrease = 5f;
     private float _rateDecrease = 3f;
 
+    [Tooltip("Gauge can never drop below this value (floor)")]
+    public float minHeatGauge = 0f;
+
     private float _currentGauge = 0f;
     private bool _isGameOver = false;
 
     public UnityEvent OnGameOver;
 
-    public bool _isIncover;
+    public bool IsInCover;
 
-    // Read-only property — other systems read this, only HotGauge writes it
+    // Read-only — other systems read this value, only HotGauge writes it
     public float CurrentGauge => _currentGauge;
 
-    // CharacterStats drives all rates via RelinkStats
     private CharacterStats _stats;
 
     private void Start()
@@ -36,27 +38,28 @@ public class HotGauge : MonoBehaviour
         UpdateHeatGauge();
         CheckGameOver();
 
-        //Debug.Log($"Current Heat Gauge: {_currentGauge:F1}");
+        Debug.Log($"Current Heat Gauge: {_currentGauge:F1} / {_maxGauge:F0}");
     }
 
     // Pull current (post-modifier) rates from CharacterStats every frame
     private void RelinkStats()
     {
-        _rateIncrease = _stats.currentHeatIncreaseRate;  // already has timed modifiers baked in
+        _rateIncrease = _stats.currentHeatIncreaseRate;
         _rateDecrease = _stats.baseHeatDecreaseRate;
-        _maxGauge = _stats.maxHeatGauge;
+        // Guard: maxHeatGauge must never be zero or negative
+        _maxGauge = Mathf.Max(_stats.maxHeatGauge, 1f);
     }
 
     private void UpdateHeatGauge()
     {
-        if (!_isIncover)
+        if (!IsInCover)
             _currentGauge += _rateIncrease * Time.deltaTime;
         else
             _currentGauge -= _rateDecrease * Time.deltaTime;
 
-        _currentGauge = Mathf.Clamp(_currentGauge, 0f, _maxGauge);
+        _currentGauge = Mathf.Clamp(_currentGauge, minHeatGauge, _maxGauge);
 
-        // Keep CharacterStats mirror in sync so EffectManager instant writes are visible
+        // Mirror into CharacterStats
         _stats.currentHotGauge = _currentGauge;
     }
 
@@ -69,10 +72,10 @@ public class HotGauge : MonoBehaviour
         }
     }
 
-    // Called by EffectManager.ApplyInstant for HeatGauge instant effects
+    // Called by CharacterStats.ApplyInstantHeatGauge for instant effects
     public void AddToGauge(float delta)
     {
-        _currentGauge = Mathf.Clamp(_currentGauge + delta, 0f, _maxGauge);
+        _currentGauge = Mathf.Clamp(_currentGauge + delta, minHeatGauge, _maxGauge);
         _stats.currentHotGauge = _currentGauge;
     }
 }
