@@ -19,3 +19,4 @@ MonoBehaviour:
   SampleResolution: 6
   HotGaugeIncreaseRate: 5
   HotGaugeDecreaseRate: 3
+  DebugColor: {r: 0.5019608, g: 0.5019608, b: 0, a: 1}

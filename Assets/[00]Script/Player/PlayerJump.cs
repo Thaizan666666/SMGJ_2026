@@ -49,7 +49,7 @@ public class PlayerJump : MonoBehaviour
         {
             m_IsJumping = true;
             m_JumpTimeCounter = 0f;
-            m_Rb.velocity = new Vector2(m_Rb.velocity.x, m_JumpForce);
+            m_Rb.linearVelocity = new Vector2(m_Rb.linearVelocity.x, m_JumpForce);
         }
 
         // กดค้างอยู่ + ยังอยู่ในช่วง MaxJumpTime → เพิ่มแรงขึ้น
@@ -57,7 +57,7 @@ public class PlayerJump : MonoBehaviour
         {
             if (m_JumpTimeCounter < m_MaxJumpTime)
             {
-                m_Rb.velocity = new Vector2(m_Rb.velocity.x, m_JumpForce);
+                m_Rb.linearVelocity = new Vector2(m_Rb.linearVelocity.x, m_JumpForce);
                 m_JumpTimeCounter += Time.deltaTime;
             }
             else
