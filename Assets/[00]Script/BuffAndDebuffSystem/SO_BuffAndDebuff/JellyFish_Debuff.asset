@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb63799aed9c4b947a8e5bcac3cb07cc, type: 3}
-  m_Name: SlowSpeed
+  m_Name: JellyFish_Debuff
   m_EditorClassIdentifier: Assembly-CSharp::TimedEffectData
   effectId: 201
-  displayName: SlowSpeed
+  displayName: Debuff_JellyFish
   duration: 5
-  statEntries: []
+  statEntries:
+  - stat: 0
+    mode: 1
+    flatValue: 0
+    percentValue: 0.7

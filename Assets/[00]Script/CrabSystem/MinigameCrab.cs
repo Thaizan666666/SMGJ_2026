@@ -10,7 +10,7 @@ public class MinigameCrab : MonoBehaviour
 
     [Header("UI")]
     public Slider barSlider;             // ลาก Slider มาใส่
-
+    public GameObject minigamePanel;     // ลาก Panel UI มาใส่
     private float currentValue = 0f;
     private bool waitingForD = false;    // false = รอกด A, true = รอกด D
     public bool isActive { get; private set; }  // เปิด/ปิด minigame
@@ -69,6 +69,7 @@ public class MinigameCrab : MonoBehaviour
     void OnBarFull()
     {
         isActive = false;
+        minigamePanel.SetActive(false);
         Debug.Log("หลอดเต็ม! Minigame สำเร็จ");
         // ใส่ Logic ต่อที่นี่ เช่น ปิด Panel, เรียก Event
     }
@@ -79,5 +80,6 @@ public class MinigameCrab : MonoBehaviour
         currentValue = 0f;
         waitingForD = false;
         isActive = true;
+        minigamePanel.SetActive(true);
     }
 }
