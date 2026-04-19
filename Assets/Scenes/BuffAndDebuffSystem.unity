@@ -1037,6 +1037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b791d4f921773f145b11b0952cb26c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  _IsHit: 0
+  cd: 3
 --- !u!4 &334400621779557583
 Transform:
   m_ObjectHideFlags: 0
@@ -1334,7 +1336,6 @@ MonoBehaviour:
   baseHeatIncreaseRate: 5
   baseHeatDecreaseRate: 3
   currentHeatIncreaseRate: 0
-  currentHeatDecreaseRate: 0
   maxHeatGauge: 100
   currentHotGauge: 0
 --- !u!114 &8458700254096362262
