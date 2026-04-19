@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class HotGauge : MonoBehaviour
 {
@@ -14,11 +15,15 @@ public class HotGauge : MonoBehaviour
     private float _currentGauge = 0f;
     private bool _isGameOver = false;
 
+    [Header("Gauge Visualized")]
+    public Slider HeatGauge;
+
+    [Space]
     public UnityEvent OnGameOver;
 
     public bool IsInCover;
 
-    // Read-only � other systems read this value, only HotGauge writes it
+    // Read-only — other systems read this value, only HotGauge writes it
     public float CurrentGauge => _currentGauge;
 
     private CharacterStats _stats;
@@ -27,6 +32,8 @@ public class HotGauge : MonoBehaviour
     {
         _stats = GetComponent<CharacterStats>();
         _currentGauge = 0f;
+        UpdateHeatGauge();
+        UpdateHeatUI();
         RelinkStats();
     }
 
@@ -34,11 +41,12 @@ public class HotGauge : MonoBehaviour
     {
         if (_isGameOver) return;
 
+        
         RelinkStats();
-        UpdateHeatGauge();
         CheckGameOver();
 
         Debug.Log($"Current Heat Gauge: {_currentGauge:F1} / {_maxGauge:F0}");
+        UpdateHeatGauge();
     }
 
     // Pull current (post-modifier) rates from CharacterStats every frame
@@ -59,6 +67,8 @@ public class HotGauge : MonoBehaviour
 
         _currentGauge = Mathf.Clamp(_currentGauge, minHeatGauge, _maxGauge);
 
+        UpdateHeatUI(); 
+
         // Mirror into CharacterStats
         _stats.currentHotGauge = _currentGauge;
     }
@@ -77,5 +87,11 @@ public class HotGauge : MonoBehaviour
     {
         _currentGauge = Mathf.Clamp(_currentGauge + delta, minHeatGauge, _maxGauge);
         _stats.currentHotGauge = _currentGauge;
+    }
+
+    private void UpdateHeatUI()
+    {
+        if (HeatGauge != null)
+            HeatGauge.value = _currentGauge / _maxGauge;
     }
 }
