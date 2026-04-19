@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,12 +8,10 @@ public class PlayerMovement : MonoBehaviour
     private float m_Deceleration;
     private float m_SkidDeceleration;
 
-
-    [Header("StunSettings")]
+    [Header("Stun Settings")]
     [SerializeField] public bool _IsHit = false;
     [SerializeField] public float cd = 3f;
-    private float cdstun = 0f;
-    
+    private float _cdstun = 0f;
 
     private Rigidbody2D m_Rb;
     private InputSystem m_Input;
@@ -28,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         RelinkStats();
     }
 
-    // Pull current (post-modifier) values from CharacterStats each physics tick
+    // Pull current post-modifier values from CharacterStats each physics tick
     public void RelinkStats()
     {
         m_MaxSpeed = m_CharacterStats.currentMaxSpeed;
@@ -39,15 +36,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        RelinkStats();       // always read latest modded values first
+        RelinkStats();   // always read latest modded values first
+
         if (!_IsHit)
-        {
             HandleMovement();
-        }
         else
-        {
-            TimeStun();
-        }
+            TickStun();
     }
 
     private void HandleMovement()
@@ -67,32 +61,52 @@ public class PlayerMovement : MonoBehaviour
         float newX = Mathf.MoveTowards(velocityX, targetSpeed, accel * Time.fixedDeltaTime);
         m_Rb.linearVelocity = new Vector2(newX, m_Rb.linearVelocity.y);
 
-        // Store actual physics velocity separately — not the same as max speed
+        // Store actual physics velocity separately from the max speed cap
         m_CharacterStats.currentVelocityX = newX;
-        Debug.LogWarning($"Max Speed :{m_MaxSpeed}");
+
+        Debug.LogWarning($"MaxSpeed: {m_MaxSpeed}");
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Ball") && _IsHit == false)
+        if (col.gameObject.CompareTag("Ball") && !_IsHit)
         {
             _IsHit = true;
-            cdstun = 0f;
-            Debug.Log("Stun");
+            _cdstun = 0f;
+            // Zero out horizontal velocity immediately on stun hit
+            m_Rb.linearVelocity = new Vector2(0f, m_Rb.linearVelocity.y);
+            Debug.Log("Stunned");
         }
     }
 
-    private void TimeStun()
+    private void TickStun()
     {
-        if(cdstun <= cd)
-        {
-            cdstun += Time.deltaTime;
-            Debug.Log(cdstun);
-        }
-        else
+        // Smoothly bring the player to a stop while stunned
+        m_Rb.linearVelocity = new Vector2(
+            Mathf.MoveTowards(m_Rb.linearVelocity.x, 0f, m_Deceleration * Time.fixedDeltaTime),
+            m_Rb.linearVelocity.y
+        );
+
+        _cdstun += Time.fixedDeltaTime;   
+
+        if (_cdstun >= cd)
         {
             _IsHit = false;
-            Debug.Log("Can Move");
+            _cdstun = 0f;
+            Debug.Log("Stun ended — can move");
         }
     }
+
+
+    // Force a stun from outside (e.g. ObstacleDebuff, damage system)
+    public void ApplyStun(float duration)
+    {
+        _IsHit = true;
+        _cdstun = 0f;
+        cd = duration;
+        m_Rb.linearVelocity = new Vector2(0f, m_Rb.linearVelocity.y);
+    }
+
+    // Read stun state from UI or other systems
+    public bool IsStunned => _IsHit;
 }
