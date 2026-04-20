@@ -17,6 +17,7 @@ public class TriggerEventCrab : MonoBehaviour
             
             minigame.StartMinigame();
             _isTrigger = true;
+            Debug.Log("-------------------------------------------------------------------------");
         }
     }
 }
