@@ -14,6 +14,7 @@ public class IceCreamCount : MonoBehaviour
     public float CurrentTime => currentTime;
     public float NormalizedTime => currentTime / totalTime;
     public bool HasStarted => hasStarted;
+    public bool IsFinished => isFinished;
 
     private float currentTime;
     private bool hasStarted = false;

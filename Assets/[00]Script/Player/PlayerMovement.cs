@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D m_Rb;
     private InputSystem m_Input;
     private CharacterStats m_CharacterStats;
+    private HotGauge m_HotGauge;
     private MinigameCrab m_MinigameCrab;
 
     void Start()
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         m_Rb = GetComponent<Rigidbody2D>();
         m_Input = GetComponent<InputSystem>();
         m_CharacterStats = GetComponent<CharacterStats>();
+        m_HotGauge = GetComponent<HotGauge>();
         m_MinigameCrab = FindFirstObjectByType<MinigameCrab>();
         if (m_MinigameCrab == null)
         {
@@ -116,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool CoditionMove()
     {
-        if (_IsHit || m_MinigameCrab.isActive)
+        if (_IsHit || m_MinigameCrab.isActive || m_HotGauge._IsGameOver)
         {
             return false;
         }

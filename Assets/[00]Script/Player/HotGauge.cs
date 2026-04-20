@@ -14,6 +14,7 @@ public class HotGauge : MonoBehaviour
 
     private float _currentGauge = 0f;
     private bool _isGameOver = false;
+    public bool _IsGameOver => _isGameOver;
 
     [Header("Gauge Visualized")]
     public Slider HeatGauge;
@@ -78,7 +79,8 @@ public class HotGauge : MonoBehaviour
         if (_currentGauge >= _maxGauge)
         {
             _isGameOver = true;
-            OnGameOver?.Invoke();
+            ManagerScene.Instance.LoadSceneMomHappyEnding();
+            //OnGameOver?.Invoke();
         }
     }
 
