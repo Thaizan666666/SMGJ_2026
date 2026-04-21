@@ -14,6 +14,7 @@ public class MinigameCrab : MonoBehaviour
     private float currentValue = 0f;
     private bool waitingForD = false;    // false = รอกด A, true = รอกด D
     public bool isActive { get; private set; }  // เปิด/ปิด minigame
+    public bool isFinish = false;
 
     void Start()
     {
@@ -69,6 +70,7 @@ public class MinigameCrab : MonoBehaviour
     void OnBarFull()
     {
         isActive = false;
+        isFinish = true;
         minigamePanel.SetActive(false);
         Debug.Log("หลอดเต็ม! Minigame สำเร็จ");
         // ใส่ Logic ต่อที่นี่ เช่น ปิด Panel, เรียก Event
@@ -79,6 +81,7 @@ public class MinigameCrab : MonoBehaviour
     {
         currentValue = 0f;
         waitingForD = false;
+        isFinish = false;
         isActive = true;
         minigamePanel.SetActive(true);
     }
