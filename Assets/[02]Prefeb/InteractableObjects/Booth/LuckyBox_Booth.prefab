@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1653074798504972326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1024231870056309308, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fd50346d08bbfc545b19f01e93b9e9fd, type: 3}
+    - target: {fileID: 1237828211158306004, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: da3a1f94b4b6b2a41b342fca95483d85, type: 3}
+    - target: {fileID: 2327093598406258153, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375569139463268058, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_Name
+      value: LuckyBox_Booth
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789654913069856918, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c420b2faadf5d14eb1b7eff444bb68e, type: 3}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869092358727261323, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546947646308416094, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c708334e16082448b6f07387876ccbd, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2375569139463268058, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2534158002584577587}
+  m_SourcePrefab: {fileID: 100100000, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+--- !u!1 &3893169800768960252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2375569139463268058, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+  m_PrefabInstance: {fileID: 1653074798504972326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2534158002584577587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3893169800768960252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af8b84f361695f34c9d5c3c567066875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuckyBooth
+  Item_Setting: {fileID: 0}
+  SellerRenderer: {fileID: 6947995793090996856}
+  Seller: {fileID: 21300000, guid: 6c708334e16082448b6f07387876ccbd, type: 3}
+  SellerAfterInteract: {fileID: 21300000, guid: 9553632e59625df419aef25150f786b6, type: 3}
+  ItemsList:
+  - Item: {fileID: 11400000, guid: 4c2f9445e7ab4b34e8e0980798bbe772, type: 2}
+    Weight: 5
+  - Item: {fileID: 11400000, guid: 5e56ea61d28ba924d943759cc9028389, type: 2}
+    Weight: 45
+  - Item: {fileID: 11400000, guid: e039a3a800b45d44ba40c5f994dd8644, type: 2}
+    Weight: 45
+--- !u!212 &6947995793090996856 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8546947646308416094, guid: 720149d6aa94dbf44a7b7038491f79ae, type: 3}
+  m_PrefabInstance: {fileID: 1653074798504972326}
+  m_PrefabAsset: {fileID: 0}
