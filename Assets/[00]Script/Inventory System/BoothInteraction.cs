@@ -4,8 +4,8 @@ using UnityEngine;
 public class BoothInteraction : MonoBehaviour
 {
     public SO_Item_Setting Item_Setting;
-    private bool canInteract;
-    private bool isUsed;
+    protected bool canInteract;
+    protected bool isUsed;
     private string playerTag = "Player";
 
     [Header("Sprite")]
@@ -15,7 +15,7 @@ public class BoothInteraction : MonoBehaviour
 
     
 
-    private InventorySystem inventorySystem;
+    protected InventorySystem inventorySystem;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class BoothInteraction : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!canInteract) return;
         if (isUsed) return;
@@ -55,7 +55,7 @@ public class BoothInteraction : MonoBehaviour
         }
     }
 
-    private void ChangeSprite() {
+    protected void ChangeSprite() {
         SellerRenderer.sprite = SellerAfterInteract;
     }
 }
