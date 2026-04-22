@@ -76,7 +76,7 @@ public class HotGauge : MonoBehaviour
         if (_currentGauge >= _maxGauge)
         {
             _isGameOver = true;
-            ManagerScene.Instance.LoadSceneBadEnding();
+            ManagerScene.Instance.LoadSunBurnEnding();
         }
     }
 

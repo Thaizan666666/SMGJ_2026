@@ -1,17 +1,61 @@
-﻿using JetBrains.Annotations;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.UI;
 
 public class ManagerScene : MonoBehaviour
 {
     public static ManagerScene Instance;
 
     private FadeSystem fadeSystem;
-    private string sceneName;
-    private string targetUI;
+
+    // ───────────────────────────────────────────────
+    //  Scene Names  (edit here, not scattered around)
+    // ───────────────────────────────────────────────
+    public static class Scenes
+    {
+        public const string MainMenu = "Prototype[03]";
+        public const string Ending = "Ending";
+    }
+
+    // ───────────────────────────────────────────────
+    //  UI Object Names inside the Ending scene
+    // ───────────────────────────────────────────────
+    public static class EndingUI
+    {
+        public const string Happy = "HappyEnding";
+        public const string MomSad = "MonSad";
+        public const string SunBurnt = "SunBurnt";
+    }
+
+    // ───────────────────────────────────────────────
+    //  Animator trigger name on each EndingUI object
+    //  Make sure all 3 animators use this same trigger
+    // ───────────────────────────────────────────────
+    private const string AnimTrigger = "Play";
+
+    // ──────────────────────────────────────────────────────
+    //  Shortcut methods  (call these from anywhere)
+    // ──────────────────────────────────────────────────────
+    public void LoadHappyEnding() => LoadScene(Scenes.Ending, EndingUI.Happy);
+    public void LoadMomSadEnding() => LoadScene(Scenes.Ending, EndingUI.MomSad);
+    public void LoadSunBurnEnding() => LoadScene(Scenes.Ending, EndingUI.SunBurnt);
+    public void LoadMainMenu() => LoadScene(Scenes.MainMenu);
+    public void LoadGame() => LoadScene(Scenes.MainMenu);
+
+    // ──────────────────────────────────────────────────────
+    //  Generic method — use this to go anywhere, any time
+    //  e.g.  ManagerScene.Instance.LoadScene("MyScene", "MyUI");
+    // ──────────────────────────────────────────────────────
+    public void LoadScene(string sceneName, string targetUI = "")
+    {
+        if (isLoading) return;
+        StartCoroutine(LoadSceneCoroutine(sceneName, targetUI));
+    }
+
+    // ──────────────────────────────────────────────────────
+    //  Internals
+    // ──────────────────────────────────────────────────────
+    private bool isLoading = false;
 
     void Awake()
     {
@@ -25,72 +69,79 @@ public class ManagerScene : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     void Start()
     {
         fadeSystem = GetComponent<FadeSystem>();
+        fadeSystem.FadeFromBlack();
     }
-    public void LoadSceneMomHappyEnding()
+
+    IEnumerator LoadSceneCoroutine(string sceneName, string targetUI)
     {
-        sceneName = "Ending";                //ได้ไอตืม
-        targetUI = "HappyEnding";
-        Debug.Log("---------------------------------------------------------------LoadSceneMomHappyEnding");
-        StartCoroutine(LoadSceneCoroutine());
-    }
-    public void LoadSceneMomSadEnding()
-    {
-        sceneName = "Ending";                //อดแดก
-        targetUI = "MonSad";
-        Debug.Log("---------------------------------------------------------------LoadSceneMomSadEnding");
-        StartCoroutine(LoadSceneCoroutine());
-    }
-    public void LoadSceneBadEnding()
-    {
-        sceneName = "Ending";                //มเร็งแดก
-        targetUI = "SunBurnt";
-        Debug.Log("---------------------------------------------------------------LoadSceneBadEnding");
-        StartCoroutine(LoadSceneCoroutine());    
-    }
-    public void MainMenu()
-    {
-        sceneName = "Prototype[02]";                //หน้าMenu
-        targetUI = "";
-        Debug.Log("---------------------------------------------------------------MainMenu");
-        StartCoroutine(LoadSceneCoroutine());
-    }
-    public void Game()
-    {
-        sceneName = "Prototype[02]";                //หน้าเกม
-        targetUI = "";
-        Debug.Log("---------------------------------------------------------------Game");
-        StartCoroutine(LoadSceneCoroutine());
-    }
-    IEnumerator LoadSceneCoroutine()
-    {
-        Debug.Log("---------------------------------------------------------------LoadSceneCoroutine");
+        isLoading = true;
+
+        // 1. Fade out
         fadeSystem.FadeToBlack();
         yield return new WaitForSeconds(fadeSystem.fadeDuration);
+
+        // 2. Load scene
         yield return SceneManager.LoadSceneAsync(sceneName);
+
+        // 3. Wait 1 frame — ensures all Awake/Start in the new scene have run
+        yield return null;
+
+        // 4. Activate target UI and trigger animation
         if (!string.IsNullOrEmpty(targetUI))
         {
-            Canvas canvas = FindAnyObjectByType<Canvas>();
+            Transform uiTarget = FindUIInLoadedScene(sceneName, targetUI);
 
-            if (canvas != null)
+            if (uiTarget != null)
             {
-                Transform uiTarget = canvas.transform.Find(targetUI);
-                if (uiTarget != null)
-                {
-                    uiTarget.gameObject.SetActive(true);
-                    Debug.Log("เปิด UI: " + targetUI);
-                }
+                uiTarget.gameObject.SetActive(true);
+
+                // Wait 1 more frame so Animator wakes up after SetActive
+                yield return null;
+
+                Animator animator = uiTarget.GetComponent<Animator>();
+                if (animator != null)
+                    animator.SetTrigger(AnimTrigger);
                 else
-                {
-                    Debug.LogWarning("หาไม่เจอ: " + targetUI);
-                }
+                    Debug.LogWarning($"[ManagerScene] No Animator on: '{targetUI}'");
             }
             else
             {
-                Debug.LogWarning("ไม่มี Canvas ใน scene: " + sceneName);
+                Debug.LogWarning($"[ManagerScene] '{targetUI}' not found in scene '{sceneName}'");
             }
         }
+
+        // 5. Fade back in
+        fadeSystem.FadeFromBlack();
+        yield return new WaitForSeconds(fadeSystem.fadeDuration);
+
+        isLoading = false;
+    }
+
+    // Searches only Canvases that belong to the newly loaded scene,
+    // skipping the DontDestroyOnLoad fade canvas.
+    private Transform FindUIInLoadedScene(string sceneName, string targetUI)
+    {
+        Scene loadedScene = SceneManager.GetSceneByName(sceneName);
+        Canvas[] allCanvases = FindObjectsByType<Canvas>(FindObjectsSortMode.None);
+
+        foreach (Canvas canvas in allCanvases)
+        {
+            // Skip any canvas that lives in DontDestroyOnLoad
+            if (!canvas.gameObject.scene.IsValid()) continue;
+            if (canvas.gameObject.scene != loadedScene) continue;
+
+            Transform found = canvas.transform.Find(targetUI);
+            if (found != null)
+            {
+                Debug.Log($"[ManagerScene] Found '{targetUI}' in canvas '{canvas.name}'");
+                return found;
+            }
+        }
+
+        return null;
     }
 }

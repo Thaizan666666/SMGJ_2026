@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MOM : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class MOM : MonoBehaviour
         {
             if(GotIceCream.IsFinished == false)
             {
+                ManagerScene.Instance.LoadHappyEnding();
                 onHappyEnding?.Invoke();
             }
             else

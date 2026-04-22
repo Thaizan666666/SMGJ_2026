@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: a7efa596b950cec4ea71200d873e5191
+guid: 2190e81ab6cd2ea4382a3675623b6e90
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2422140021364276289
-    second: Icecream_NPC_Welcome_0
-  - first:
-      213: 7021409953127333790
-    second: Icecream_NPC_Welcome_1
-  - first:
-      213: -1860133126069699370
-    second: Icecream_NPC_Welcome_2
+      213: 6853316077166303748
+    second: Tree_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Icecream_NPC_Welcome_0
+      name: Tree_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 360
-        width: 34
-        height: 33
+        x: 94
+        y: 5
+        width: 619
+        height: 974
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14cbca1348b2d9120800000000000000
-      internalID: 2422140021364276289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icecream_NPC_Welcome_1
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 379
-        width: 28
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9ffb8eb62f017160800000000000000
-      internalID: 7021409953127333790
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icecream_NPC_Welcome_2
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 0
-        width: 213
-        height: 538
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6dcbda9f6ca7f26e0800000000000000
-      internalID: -1860133126069699370
+      spriteID: 40a98f869aedb1f50800000000000000
+      internalID: 6853316077166303748
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Icecream_NPC_Welcome_0: 2422140021364276289
-      Icecream_NPC_Welcome_1: 7021409953127333790
-      Icecream_NPC_Welcome_2: -1860133126069699370
+      Tree_0: 6853316077166303748
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

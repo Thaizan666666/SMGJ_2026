@@ -266,7 +266,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6272622472621748200, guid: 4e5940b665f7a84489bee267df0da14c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.26
+      value: 21.570526
       objectReference: {fileID: 0}
     - target: {fileID: 6272622472621748200, guid: 4e5940b665f7a84489bee267df0da14c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426820745051660202, guid: 75b1d31f86e590643b06952f7e9388c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.15
+      value: 33.980526
       objectReference: {fileID: 0}
     - target: {fileID: 6426820745051660202, guid: 75b1d31f86e590643b06952f7e9388c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -380,7 +380,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3856601689196737545, guid: bd71b04d811931b48af9d52e5f23ec03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.099474
+      value: 43.93
       objectReference: {fileID: 0}
     - target: {fileID: 3856601689196737545, guid: bd71b04d811931b48af9d52e5f23ec03, type: 3}
       propertyPath: m_LocalPosition.y
@@ -427,6 +427,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd71b04d811931b48af9d52e5f23ec03, type: 3}
+--- !u!1001 &5205136313868334639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 179501172284868132, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_Name
+      value: Mom Waiting For You
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.90639
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766791087875370769, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f04d49b36a651e4db50bd5d91037cd1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -435,3 +492,4 @@ SceneRoots:
   - {fileID: 587419238}
   - {fileID: 570787299}
   - {fileID: 1794607439}
+  - {fileID: 5205136313868334639}

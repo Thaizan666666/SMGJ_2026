@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2045715415
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4796161720446389891, guid: cfdd2d9a8d946d34bbee4af3415e015e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf0265858391804ea6e14995441cbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerEventCrab
+  coolDown: 3
 --- !u!58 &7828478578162449566
 CircleCollider2D:
   m_ObjectHideFlags: 0

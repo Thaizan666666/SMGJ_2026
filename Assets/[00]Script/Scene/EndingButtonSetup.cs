@@ -12,7 +12,7 @@ public class EndingButtonSetup : MonoBehaviour
         Button btnMainMenu = GameObject.Find("MainMenu").GetComponent<Button>();
 
         // ผูก OnClick
-        btnReset.onClick.AddListener(() => manager.Game());
-        btnMainMenu.onClick.AddListener(() => manager.MainMenu());
+        btnReset.onClick.AddListener(() => manager.LoadGame());
+        btnMainMenu.onClick.AddListener(() => manager.LoadMainMenu());
     }
 }

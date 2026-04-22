@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: a7efa596b950cec4ea71200d873e5191
+guid: f6647dde079930145b6bb57fa83935d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2422140021364276289
-    second: Icecream_NPC_Welcome_0
-  - first:
-      213: 7021409953127333790
-    second: Icecream_NPC_Welcome_1
-  - first:
-      213: -1860133126069699370
-    second: Icecream_NPC_Welcome_2
+      213: -8782467312816613811
+    second: MomSadEnding_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,10 +46,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
-  alignment: 7
+  spriteMeshType: 1
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -119,57 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Icecream_NPC_Welcome_0
+      name: MomSadEnding_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 360
-        width: 34
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14cbca1348b2d9120800000000000000
-      internalID: 2422140021364276289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icecream_NPC_Welcome_1
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 379
-        width: 28
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9ffb8eb62f017160800000000000000
-      internalID: 7021409953127333790
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icecream_NPC_Welcome_2
-      rect:
-        serializedVersion: 2
-        x: 76
+        x: 0
         y: 0
-        width: 213
-        height: 538
+        width: 2560
+        height: 1440
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6dcbda9f6ca7f26e0800000000000000
-      internalID: -1860133126069699370
+      spriteID: d461610b2886e1680800000000000000
+      internalID: -8782467312816613811
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Icecream_NPC_Welcome_0: 2422140021364276289
-      Icecream_NPC_Welcome_1: 7021409953127333790
-      Icecream_NPC_Welcome_2: -1860133126069699370
+      MomSadEnding_0: -8782467312816613811
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

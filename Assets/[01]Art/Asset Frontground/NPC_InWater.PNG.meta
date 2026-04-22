@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: a7efa596b950cec4ea71200d873e5191
+guid: 7a0b5082b88ef99448922813658b5519
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2422140021364276289
-    second: Icecream_NPC_Welcome_0
+      213: -7087399996261605541
+    second: NPC_InWater_0
   - first:
-      213: 7021409953127333790
-    second: Icecream_NPC_Welcome_1
+      213: 1962001918788093820
+    second: NPC_InWater_1
   - first:
-      213: -1860133126069699370
-    second: Icecream_NPC_Welcome_2
+      213: 5641647239028597967
+    second: NPC_InWater_2
+  - first:
+      213: 2219592854736391425
+    second: NPC_InWater_3
+  - first:
+      213: -5243036996054905566
+    second: NPC_InWater_4
+  - first:
+      213: 57338839656324296
+    second: NPC_InWater_5
+  - first:
+      213: 5460293583795040648
+    second: NPC_InWater_6
+  - first:
+      213: 4000318179103697848
+    second: NPC_InWater_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,12 +134,122 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Icecream_NPC_Welcome_0
+      name: NPC_InWater_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 360
-        width: 34
+        x: 334
+        y: 401
+        width: 105
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5fd8b9014f74ad90800000000000000
+      internalID: -7087399996261605541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_InWater_1
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 410
+        width: 37
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c77cff9995e6a3b10800000000000000
+      internalID: 1962001918788093820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_InWater_2
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 496
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc4ec5ee5482b4e40800000000000000
+      internalID: 5641647239028597967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_InWater_3
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 450
+        width: 73
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10dce8401f39dce10800000000000000
+      internalID: 2219592854736391425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_InWater_4
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 457
+        width: 75
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22d8ae181adfc37b0800000000000000
+      internalID: -5243036996054905566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_InWater_5
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 462
+        width: 49
         height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -134,20 +259,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14cbca1348b2d9120800000000000000
-      internalID: 2422140021364276289
+      spriteID: 8cc5c81fe55bbc000800000000000000
+      internalID: 57338839656324296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icecream_NPC_Welcome_1
+      name: NPC_InWater_6
       rect:
         serializedVersion: 2
-        x: 60
-        y: 379
-        width: 28
-        height: 27
+        x: 583
+        y: 439
+        width: 67
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9ffb8eb62f017160800000000000000
-      internalID: 7021409953127333790
+      spriteID: 881b277a51cd6cb40800000000000000
+      internalID: 5460293583795040648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icecream_NPC_Welcome_2
+      name: NPC_InWater_7
       rect:
         serializedVersion: 2
-        x: 76
-        y: 0
-        width: 213
-        height: 538
+        x: 251
+        y: 385
+        width: 36
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +303,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6dcbda9f6ca7f26e0800000000000000
-      internalID: -1860133126069699370
+      spriteID: 8bb6306703cf38730800000000000000
+      internalID: 4000318179103697848
       vertices: []
       indices: 
       edges: []
@@ -198,9 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Icecream_NPC_Welcome_0: 2422140021364276289
-      Icecream_NPC_Welcome_1: 7021409953127333790
-      Icecream_NPC_Welcome_2: -1860133126069699370
+      NPC_InWater_0: -7087399996261605541
+      NPC_InWater_1: 1962001918788093820
+      NPC_InWater_2: 5641647239028597967
+      NPC_InWater_3: 2219592854736391425
+      NPC_InWater_4: -5243036996054905566
+      NPC_InWater_5: 57338839656324296
+      NPC_InWater_6: 5460293583795040648
+      NPC_InWater_7: 4000318179103697848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
