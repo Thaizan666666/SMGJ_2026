@@ -1088,6 +1088,7 @@ GameObject:
   - component: {fileID: 1792447745}
   - component: {fileID: 1792447744}
   - component: {fileID: 1792447743}
+  - component: {fileID: 1792447747}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1183,6 +1184,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1792447747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792447742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13925956d71da8d4a8cc0a88e34f2dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndingUIController
+  happyEndingUI: {fileID: 1396574145}
+  momSadUI: {fileID: 1863247020}
+  sunBurntUI: {fileID: 1248923880}
+  animTrigger: Play
 --- !u!1 &1808288224
 GameObject:
   m_ObjectHideFlags: 0
