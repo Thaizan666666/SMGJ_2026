@@ -19,9 +19,6 @@ public class HotGauge : MonoBehaviour
     [Header("Gauge Visualized")]
     public Slider HeatGauge;
 
-    [Space]
-    public UnityEvent OnGameOver;
-
     public bool IsInCover;
 
     // Read-only — other systems read this value, only HotGauge writes it
@@ -79,8 +76,7 @@ public class HotGauge : MonoBehaviour
         if (_currentGauge >= _maxGauge)
         {
             _isGameOver = true;
-            ManagerScene.Instance.LoadSceneMomHappyEnding();
-            //OnGameOver?.Invoke();
+            ManagerScene.Instance.LoadSceneBadEnding();
         }
     }
 

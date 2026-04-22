@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ManagerScene : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ManagerScene : MonoBehaviour
 
     private FadeSystem fadeSystem;
     private string sceneName;
+    private string targetUI;
 
     void Awake()
     {
@@ -29,44 +31,66 @@ public class ManagerScene : MonoBehaviour
     }
     public void LoadSceneMomHappyEnding()
     {
-        sceneName = "Prototype[02]";
+        sceneName = "Ending";                //ได้ไอตืม
+        targetUI = "HappyEnding";
         Debug.Log("---------------------------------------------------------------LoadSceneMomHappyEnding");
         StartCoroutine(LoadSceneCoroutine());
-        //SceneManager.LoadScene();                //ได้ไอตืม
     }
     public void LoadSceneMomSadEnding()
     {
-        sceneName = "Prototype[02]";
+        sceneName = "Ending";                //อดแดก
+        targetUI = "MonSad";
         Debug.Log("---------------------------------------------------------------LoadSceneMomSadEnding");
         StartCoroutine(LoadSceneCoroutine());
-        //SceneManager.LoadScene();                //อดแดก
     }
     public void LoadSceneBadEnding()
     {
-        sceneName = "Prototype[02]";
+        sceneName = "Ending";                //มเร็งแดก
+        targetUI = "SunBurnt";
         Debug.Log("---------------------------------------------------------------LoadSceneBadEnding");
-        StartCoroutine(LoadSceneCoroutine());
-        //SceneManager.LoadScene();                //มเร็งแดก
+        StartCoroutine(LoadSceneCoroutine());    
     }
     public void MainMenu()
     {
-        sceneName = "Prototype[02]";
+        sceneName = "Prototype[02]";                //หน้าMenu
+        targetUI = "";
         Debug.Log("---------------------------------------------------------------MainMenu");
         StartCoroutine(LoadSceneCoroutine());
-        //SceneManager.LoadScene();                //หน้าMenu
     }
     public void Game()
     {
-        sceneName = "Prototype[02]";
+        sceneName = "Prototype[02]";                //หน้าเกม
+        targetUI = "";
         Debug.Log("---------------------------------------------------------------Game");
         StartCoroutine(LoadSceneCoroutine());
-        //SceneManageer.LoadScene();               //หน้าเกม
     }
     IEnumerator LoadSceneCoroutine()
     {
         Debug.Log("---------------------------------------------------------------LoadSceneCoroutine");
         fadeSystem.FadeToBlack();
         yield return new WaitForSeconds(fadeSystem.fadeDuration);
-        SceneManager.LoadScene(sceneName);
+        yield return SceneManager.LoadSceneAsync(sceneName);
+        if (!string.IsNullOrEmpty(targetUI))
+        {
+            Canvas canvas = FindAnyObjectByType<Canvas>();
+
+            if (canvas != null)
+            {
+                Transform uiTarget = canvas.transform.Find(targetUI);
+                if (uiTarget != null)
+                {
+                    uiTarget.gameObject.SetActive(true);
+                    Debug.Log("เปิด UI: " + targetUI);
+                }
+                else
+                {
+                    Debug.LogWarning("หาไม่เจอ: " + targetUI);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("ไม่มี Canvas ใน scene: " + sceneName);
+            }
+        }
     }
 }
