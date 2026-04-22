@@ -12,28 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrarySourceAsset
-  m_Library:
-  - m_Name: Facial Express
-    m_Hash: 944828772
-    m_CategoryList: []
-    m_OverrideEntries:
-    - m_Name: Jump_Face
-      m_Hash: 375878008
-      m_Sprite: {fileID: -6755892491505463202, guid: d33958b66edf0f948b897d787be641fc, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -6755892491505463202, guid: d33958b66edf0f948b897d787be641fc, type: 3}
-    - m_Name: Hot_Face
-      m_Hash: 204875445
-      m_Sprite: {fileID: -3579168088041867125, guid: d33958b66edf0f948b897d787be641fc, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -3579168088041867125, guid: d33958b66edf0f948b897d787be641fc, type: 3}
-    - m_Name: Normal_Face
-      m_Hash: 909662702
-      m_Sprite: {fileID: -3477473056816416124, guid: d33958b66edf0f948b897d787be641fc, type: 3}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: -3477473056816416124, guid: d33958b66edf0f948b897d787be641fc, type: 3}
-    m_FromMain: 0
-    m_EntryOverrideCount: 3
+  m_Library: []
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639124263597316507
+  m_ModificationHash: 639124580082354102
   m_Version: 1
