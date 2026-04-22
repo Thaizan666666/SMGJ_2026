@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TimedEffectData
   m_EditorClassIdentifier: TableForge.Editor::TableForge.Editor.UI.TableMetadata
   expandedTables:
-    values: 56e9decc9b61520b42bf34e6
+    values: 56e9decc9b61520b42bf34e6145552eb970b680b
   transposedTables:
     values: 
   hiddenFields:
@@ -24,7 +24,7 @@ MonoBehaviour:
   itemGUIDs:
     values: []
   cellAnchorMetadata:
-    mKeys: c717ce8cbcb649dcf3e260d7a915132e
+    mKeys: c717ce8cbcb649dcf3e260d7a915132ea5a9b4aff8047e30b99982107cc06c14
     mValues:
     - position: 1
       size: {x: 0, y: 69}
@@ -33,7 +33,15 @@ MonoBehaviour:
     - position: 3
       size: {x: 0, y: 69}
     - position: 0
-      size: {x: 321, y: 0}
+      size: {x: 403, y: 0}
+    - position: 4
+      size: {x: 0, y: 69}
+    - position: 5
+      size: {x: 0, y: 69}
+    - position: 0
+      size: {x: 125, y: 0}
+    - position: 0
+      size: {x: 168, y: 0}
   functions:
     mKeys: 
     mValues: []

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_I_Monster
   m_EditorClassIdentifier: Assembly-CSharp::InstantEffectData
   effectId: 001
-  displayName: 
+  displayName: Monster Help You Up
   stat: 1
   mode: 1
   flatValue: 50
