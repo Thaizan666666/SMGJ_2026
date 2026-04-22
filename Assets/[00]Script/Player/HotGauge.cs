@@ -46,7 +46,7 @@ public class HotGauge : MonoBehaviour
         RelinkStats();
         CheckGameOver();
 
-        Debug.Log($"Current Heat Gauge: {_currentGauge:F1} / {_maxGauge:F0}");
+        //Debug.Log($"Current Heat Gauge: {_currentGauge:F1} / {_maxGauge:F0}");
         UpdateHeatGauge();
     }
 
