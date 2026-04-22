@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 959969803079711069, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 95a160607bd0ec14185aab12e33d72b2, type: 3}
     - target: {fileID: 3506514682978001511, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55,22 +51,6 @@ PrefabInstance:
     - target: {fileID: 4137863013936736891, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
       propertyPath: m_Name
       value: PicnicTable
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795060971217235540, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
-      propertyPath: m_Size.x
-      value: 6.597212
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795060971217235540, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
-      propertyPath: m_Size.y
-      value: 1.7499986
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795060971217235540, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.06249988
-      objectReference: {fileID: 0}
-    - target: {fileID: 4795060971217235540, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
-      propertyPath: m_Offset.y
-      value: 1.0694425
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

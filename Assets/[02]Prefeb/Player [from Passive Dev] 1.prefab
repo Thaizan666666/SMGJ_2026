@@ -307,6 +307,7 @@ MonoBehaviour:
   maxValue: 100
   barSlider: {fileID: 3214874224259434276}
   minigamePanel: {fileID: 8128716019781314924}
+  isFinish: 0
 --- !u!1 &1849136209664787130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1141,19 @@ MonoBehaviour:
   HeatGauge: {fileID: 3014167927484568057}
   OnGameOver:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ManagerScene, Assembly-CSharp
+        m_MethodName: LoadSceneBadEnding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   IsInCover: 0
 --- !u!114 &4466967851890998620
 MonoBehaviour:
@@ -1167,7 +1180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassiveBuffHandler
   rules:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: bcb8c1b06752f4e4c83983e5c5300acd, type: 2}
 --- !u!114 &8332476959582683920
 MonoBehaviour:
   m_ObjectHideFlags: 0
