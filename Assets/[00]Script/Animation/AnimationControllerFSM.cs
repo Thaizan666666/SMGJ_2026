@@ -2,20 +2,27 @@
 //  AnimationControllerFSM.cs  —  Self-contained, one-file Animation FSM
 //  ─────────────────────────────────────────────────────────────────────────
 //  Reads (never rewrites):
-//      PlayerMovement  →  _IsHit  (stun flag)
+//      PlayerMovement  →  _IsHit           (stun flag)
 //      InputSystem     →  InputVector.x
 //      Rigidbody2D     →  linearVelocity.y
-//      MinigameCrab    →  isActive  (trapped flag)
-//      HotGauge        →  currentHeat  ◀ rename to match your actual field
+//      MinigameCrab    →  isActive          (trapped flag)
+//      HotGauge        →  CurrentGauge      ◀ rename to match your actual field
+//      IceCreamCount   →  HasStarted        (carrying ice-cream flag)
 //
 //  Setup in Inspector:
 //      • Assign the same GroundCheck transform + radius + layer as PlayerJump
 //      • Set Hot Threshold (default 70)
 //
 //  Animator bool names expected (must match exactly):
-//      Idle_Normal  Idle_Hot  Run_Normal  Run_Hot
-//      Jump_Normal  Jump_Hot  Falling_Normal  Falling_Hot
-//      Stunned      Trapped
+//      Idle_Normal         Idle_Hot
+//      Run_Normal          Run_Hot
+//      Jump_Normal         Jump_Hot
+//      Falling_Normal      Falling_Hot
+//      Idle_Normal_Icecream    Idle_Hot_Icecream
+//      Run_Normal_Icecream     Run_Hot_Icecream
+//      Jump_Normal_Icecream    Jump_Hot_Icecream
+//      Falling_Normal_Icecream Falling_Hot_Icecream
+//      Stunned             Trapped
 // ════════════════════════════════════════════════════════════════════════════
 
 using UnityEngine;
@@ -51,7 +58,6 @@ internal sealed class AnimFSM
 
 internal abstract class AnimState
 {
-    // Shorthand aliases
     protected readonly AnimationControllerFSM C;
     protected readonly Animator Anim;
     protected readonly AnimFSM FSM;
@@ -89,30 +95,46 @@ internal abstract class AnimState
             return;
         }
 
-        Transition();   // per-state logic
+        Transition();
     }
 
-    /// <summary>Implement per-state transition rules here.</summary>
     protected abstract void Transition();
 
     // ── Shared selection helpers ──────────────────────────────────────────
+    //  Each helper branches on IsCarrying first, then IsHot.
 
-    /// Best idle state for current heat level.
-    protected AnimState IdleFor() => C.IsHot ? (AnimState)C.IdleHotSt : C.IdleNormalSt;
+    /// Best idle state for current carrying + heat level.
+    protected AnimState IdleFor()
+    {
+        if (C.IsCarrying) return C.IsHot ? (AnimState)C.IdleHotIcecreamSt : C.IdleNormalIcecreamSt;
+        return C.IsHot ? (AnimState)C.IdleHotSt : C.IdleNormalSt;
+    }
 
-    /// Best run state for current heat level.
-    protected AnimState RunFor() => C.IsHot ? (AnimState)C.RunHotSt : C.RunNormalSt;
+    /// Best run state for current carrying + heat level.
+    protected AnimState RunFor()
+    {
+        if (C.IsCarrying) return C.IsHot ? (AnimState)C.RunHotIcecreamSt : C.RunNormalIcecreamSt;
+        return C.IsHot ? (AnimState)C.RunHotSt : C.RunNormalSt;
+    }
 
-    /// Best jump state for current heat level.
-    protected AnimState JumpFor() => C.IsHot ? (AnimState)C.JumpHotSt : C.JumpNormalSt;
+    /// Best jump state for current carrying + heat level.
+    protected AnimState JumpFor()
+    {
+        if (C.IsCarrying) return C.IsHot ? (AnimState)C.JumpHotIcecreamSt : C.JumpNormalIcecreamSt;
+        return C.IsHot ? (AnimState)C.JumpHotSt : C.JumpNormalSt;
+    }
 
-    /// Best falling state for current heat level.
-    protected AnimState FallFor() => C.IsHot ? (AnimState)C.FallingHotSt : C.FallingNormalSt;
+    /// Best falling state for current carrying + heat level.
+    protected AnimState FallFor()
+    {
+        if (C.IsCarrying) return C.IsHot ? (AnimState)C.FallingHotIcecreamSt : C.FallingNormalIcecreamSt;
+        return C.IsHot ? (AnimState)C.FallingHotSt : C.FallingNormalSt;
+    }
 
-    /// Best grounded state (run or idle) for current context.
+    /// Best grounded state (run or idle).
     protected AnimState BestGrounded() => C.IsMoving ? RunFor() : IdleFor();
 
-    /// Best airborne state (jump or fall) for current context.
+    /// Best airborne state (jump or fall).
     protected AnimState BestAir() => C.VelocityY > 0.01f ? JumpFor() : FallFor();
 
     /// Best state regardless of ground/air.
@@ -120,12 +142,11 @@ internal abstract class AnimState
 }
 
 // ╔══════════════════════════════════════════════════════════════════════════╗
-// ║  3.  CONCRETE STATES                                                     ║
+// ║  3.  CONCRETE STATES — NORMAL (no ice cream)                             ║
 // ╚══════════════════════════════════════════════════════════════════════════╝
 
 // ── Idle Normal ───────────────────────────────────────────────────────────
-//  Condition: grounded, not moving, not hot
-//  Transitions: → Idle_Hot | Run_* | Jump_* | Falling_*
+//  Condition: grounded, not moving, not hot, not carrying
 internal sealed class AnimIdleNormalState : AnimState
 {
     public AnimIdleNormalState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -133,6 +154,7 @@ internal sealed class AnimIdleNormalState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(IdleFor()); return; }
         if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
         if (C.IsMoving) { FSM.ChangeState(RunFor()); return; }
         if (C.IsHot) { FSM.ChangeState(C.IdleHotSt); return; }
@@ -140,8 +162,7 @@ internal sealed class AnimIdleNormalState : AnimState
 }
 
 // ── Idle Hot ──────────────────────────────────────────────────────────────
-//  Condition: grounded, not moving, hot (≥ threshold)
-//  Transitions: → Idle_Normal | Run_* | Jump_* | Falling_*
+//  Condition: grounded, not moving, hot, not carrying
 internal sealed class AnimIdleHotState : AnimState
 {
     public AnimIdleHotState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -149,6 +170,7 @@ internal sealed class AnimIdleHotState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(IdleFor()); return; }
         if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
         if (C.IsMoving) { FSM.ChangeState(RunFor()); return; }
         if (!C.IsHot) { FSM.ChangeState(C.IdleNormalSt); return; }
@@ -156,8 +178,7 @@ internal sealed class AnimIdleHotState : AnimState
 }
 
 // ── Run Normal ────────────────────────────────────────────────────────────
-//  Condition: grounded, moving, not hot
-//  Transitions: → Idle_* | Run_Hot | Jump_* | Falling_*
+//  Condition: grounded, moving, not hot, not carrying
 internal sealed class AnimRunNormalState : AnimState
 {
     public AnimRunNormalState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -165,6 +186,7 @@ internal sealed class AnimRunNormalState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(RunFor()); return; }
         if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
         if (!C.IsMoving) { FSM.ChangeState(IdleFor()); return; }
         if (C.IsHot) { FSM.ChangeState(C.RunHotSt); return; }
@@ -172,8 +194,7 @@ internal sealed class AnimRunNormalState : AnimState
 }
 
 // ── Run Hot ───────────────────────────────────────────────────────────────
-//  Condition: grounded, moving, hot (≥ threshold)
-//  Transitions: → Idle_* | Run_Normal | Jump_* | Falling_*
+//  Condition: grounded, moving, hot, not carrying
 internal sealed class AnimRunHotState : AnimState
 {
     public AnimRunHotState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -181,6 +202,7 @@ internal sealed class AnimRunHotState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(RunFor()); return; }
         if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
         if (!C.IsMoving) { FSM.ChangeState(IdleFor()); return; }
         if (!C.IsHot) { FSM.ChangeState(C.RunNormalSt); return; }
@@ -188,8 +210,7 @@ internal sealed class AnimRunHotState : AnimState
 }
 
 // ── Jump Normal ───────────────────────────────────────────────────────────
-//  Condition: airborne, velocityY > 0.01, not hot
-//  Transitions: → Idle_* (landed) | Jump_Hot | Falling_*
+//  Condition: airborne, velocityY > 0.01, not hot, not carrying
 internal sealed class AnimJumpNormalState : AnimState
 {
     public AnimJumpNormalState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -197,6 +218,7 @@ internal sealed class AnimJumpNormalState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(JumpFor()); return; }
         if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
         if (C.IsHot) { FSM.ChangeState(C.JumpHotSt); return; }
         if (C.VelocityY <= 0.01f) { FSM.ChangeState(FallFor()); return; }
@@ -204,8 +226,7 @@ internal sealed class AnimJumpNormalState : AnimState
 }
 
 // ── Jump Hot ──────────────────────────────────────────────────────────────
-//  Condition: airborne, velocityY > 0.01, hot (≥ threshold)
-//  Transitions: → Idle_* (landed) | Jump_Normal | Falling_*
+//  Condition: airborne, velocityY > 0.01, hot, not carrying
 internal sealed class AnimJumpHotState : AnimState
 {
     public AnimJumpHotState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -213,6 +234,7 @@ internal sealed class AnimJumpHotState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(JumpFor()); return; }
         if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
         if (!C.IsHot) { FSM.ChangeState(C.JumpNormalSt); return; }
         if (C.VelocityY <= 0.01f) { FSM.ChangeState(FallFor()); return; }
@@ -220,8 +242,7 @@ internal sealed class AnimJumpHotState : AnimState
 }
 
 // ── Falling Normal ────────────────────────────────────────────────────────
-//  Condition: airborne, velocityY ≤ 0.01, not hot
-//  Transitions: → Idle_* (landed) | Falling_Hot
+//  Condition: airborne, velocityY ≤ 0.01, not hot, not carrying
 internal sealed class AnimFallingNormalState : AnimState
 {
     public AnimFallingNormalState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -229,14 +250,14 @@ internal sealed class AnimFallingNormalState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(FallFor()); return; }
         if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
         if (C.IsHot) { FSM.ChangeState(C.FallingHotSt); return; }
     }
 }
 
 // ── Falling Hot ───────────────────────────────────────────────────────────
-//  Condition: airborne, velocityY ≤ 0.01, hot (≥ threshold)
-//  Transitions: → Idle_* (landed) | Falling_Normal
+//  Condition: airborne, velocityY ≤ 0.01, hot, not carrying
 internal sealed class AnimFallingHotState : AnimState
 {
     public AnimFallingHotState(AnimationControllerFSM c, Animator a, AnimFSM f)
@@ -244,10 +265,145 @@ internal sealed class AnimFallingHotState : AnimState
 
     protected override void Transition()
     {
+        if (C.IsCarrying) { FSM.ChangeState(FallFor()); return; }
         if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
         if (!C.IsHot) { FSM.ChangeState(C.FallingNormalSt); return; }
     }
 }
+
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  4.  CONCRETE STATES — ICECREAM variants                                 ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
+
+// ── Idle Normal Icecream ──────────────────────────────────────────────────
+//  Condition: carrying, grounded, not moving, not hot
+internal sealed class AnimIdleNormalIcecreamState : AnimState
+{
+    public AnimIdleNormalIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Idle_Normal_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(IdleFor()); return; }
+        if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
+        if (C.IsMoving) { FSM.ChangeState(RunFor()); return; }
+        if (C.IsHot) { FSM.ChangeState(C.IdleHotIcecreamSt); return; }
+    }
+}
+
+// ── Idle Hot Icecream ─────────────────────────────────────────────────────
+//  Condition: carrying, grounded, not moving, hot
+internal sealed class AnimIdleHotIcecreamState : AnimState
+{
+    public AnimIdleHotIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Idle_Hot_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(IdleFor()); return; }
+        if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
+        if (C.IsMoving) { FSM.ChangeState(RunFor()); return; }
+        if (!C.IsHot) { FSM.ChangeState(C.IdleNormalIcecreamSt); return; }
+    }
+}
+
+// ── Run Normal Icecream ───────────────────────────────────────────────────
+//  Condition: carrying, grounded, moving, not hot
+internal sealed class AnimRunNormalIcecreamState : AnimState
+{
+    public AnimRunNormalIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Run_Normal_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(RunFor()); return; }
+        if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
+        if (!C.IsMoving) { FSM.ChangeState(IdleFor()); return; }
+        if (C.IsHot) { FSM.ChangeState(C.RunHotIcecreamSt); return; }
+    }
+}
+
+// ── Run Hot Icecream ──────────────────────────────────────────────────────
+//  Condition: carrying, grounded, moving, hot
+internal sealed class AnimRunHotIcecreamState : AnimState
+{
+    public AnimRunHotIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Run_Hot_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(RunFor()); return; }
+        if (!C.IsGrounded) { FSM.ChangeState(BestAir()); return; }
+        if (!C.IsMoving) { FSM.ChangeState(IdleFor()); return; }
+        if (!C.IsHot) { FSM.ChangeState(C.RunNormalIcecreamSt); return; }
+    }
+}
+
+// ── Jump Normal Icecream ──────────────────────────────────────────────────
+//  Condition: carrying, airborne, velocityY > 0.01, not hot
+internal sealed class AnimJumpNormalIcecreamState : AnimState
+{
+    public AnimJumpNormalIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Jump_Normal_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(JumpFor()); return; }
+        if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
+        if (C.IsHot) { FSM.ChangeState(C.JumpHotIcecreamSt); return; }
+        if (C.VelocityY <= 0.01f) { FSM.ChangeState(FallFor()); return; }
+    }
+}
+
+// ── Jump Hot Icecream ─────────────────────────────────────────────────────
+//  Condition: carrying, airborne, velocityY > 0.01, hot
+internal sealed class AnimJumpHotIcecreamState : AnimState
+{
+    public AnimJumpHotIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Jump_Hot_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(JumpFor()); return; }
+        if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
+        if (!C.IsHot) { FSM.ChangeState(C.JumpNormalIcecreamSt); return; }
+        if (C.VelocityY <= 0.01f) { FSM.ChangeState(FallFor()); return; }
+    }
+}
+
+// ── Falling Normal Icecream ───────────────────────────────────────────────
+//  Condition: carrying, airborne, velocityY ≤ 0.01, not hot
+internal sealed class AnimFallingNormalIcecreamState : AnimState
+{
+    public AnimFallingNormalIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Falling_Normal_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(FallFor()); return; }
+        if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
+        if (C.IsHot) { FSM.ChangeState(C.FallingHotIcecreamSt); return; }
+    }
+}
+
+// ── Falling Hot Icecream ──────────────────────────────────────────────────
+//  Condition: carrying, airborne, velocityY ≤ 0.01, hot
+internal sealed class AnimFallingHotIcecreamState : AnimState
+{
+    public AnimFallingHotIcecreamState(AnimationControllerFSM c, Animator a, AnimFSM f)
+        : base(c, a, f, "Falling_Hot_Icecream") { }
+
+    protected override void Transition()
+    {
+        if (!C.IsCarrying) { FSM.ChangeState(FallFor()); return; }
+        if (C.IsGrounded) { FSM.ChangeState(BestGrounded()); return; }
+        if (!C.IsHot) { FSM.ChangeState(C.FallingNormalIcecreamSt); return; }
+    }
+}
+
+// ╔══════════════════════════════════════════════════════════════════════════╗
+// ║  5.  CONCRETE STATES — INTERRUPT (Stunned / Trapped)                     ║
+// ╚══════════════════════════════════════════════════════════════════════════╝
 
 // ── Stunned ───────────────────────────────────────────────────────────────
 //  Condition: PlayerMovement._IsHit == true  (can interrupt any state)
@@ -278,7 +434,7 @@ internal sealed class AnimTrappedState : AnimState
 }
 
 // ╔══════════════════════════════════════════════════════════════════════════╗
-// ║  4.  MONOBEHAVIOUR CONTROLLER                                            ║
+// ║  6.  MONOBEHAVIOUR CONTROLLER                                            ║
 // ╚══════════════════════════════════════════════════════════════════════════╝
 
 /// <summary>
@@ -302,9 +458,10 @@ public sealed class AnimationControllerFSM : MonoBehaviour
     public bool IsHot { get; private set; }
     public bool IsStunned { get; private set; }
     public bool IsTrapped { get; private set; }
+    public bool IsCarrying { get; private set; }  // true while IceCreamCount.HasStarted
     public float VelocityY { get; private set; }
 
-    // ── State instances (internal: type visibility matches internal classes) ─
+    // ── State instances — normal ───────────────────────────────────────────
     internal AnimIdleNormalState IdleNormalSt { get; private set; }
     internal AnimIdleHotState IdleHotSt { get; private set; }
     internal AnimRunNormalState RunNormalSt { get; private set; }
@@ -313,16 +470,29 @@ public sealed class AnimationControllerFSM : MonoBehaviour
     internal AnimJumpHotState JumpHotSt { get; private set; }
     internal AnimFallingNormalState FallingNormalSt { get; private set; }
     internal AnimFallingHotState FallingHotSt { get; private set; }
+
+    // ── State instances — icecream ─────────────────────────────────────────
+    internal AnimIdleNormalIcecreamState IdleNormalIcecreamSt { get; private set; }
+    internal AnimIdleHotIcecreamState IdleHotIcecreamSt { get; private set; }
+    internal AnimRunNormalIcecreamState RunNormalIcecreamSt { get; private set; }
+    internal AnimRunHotIcecreamState RunHotIcecreamSt { get; private set; }
+    internal AnimJumpNormalIcecreamState JumpNormalIcecreamSt { get; private set; }
+    internal AnimJumpHotIcecreamState JumpHotIcecreamSt { get; private set; }
+    internal AnimFallingNormalIcecreamState FallingNormalIcecreamSt { get; private set; }
+    internal AnimFallingHotIcecreamState FallingHotIcecreamSt { get; private set; }
+
+    // ── State instances — interrupt ────────────────────────────────────────
     internal AnimStunnedState StunnedSt { get; private set; }
     internal AnimTrappedState TrappedSt { get; private set; }
 
-    // ── Private references ────────────────────────────────────────────────
-    [SerializeField]private Animator m_Anim;
+    // ── Private references ─────────────────────────────────────────────────
+    [SerializeField] private Animator m_Anim;
     private Rigidbody2D m_Rb;
     private PlayerMovement m_Movement;
     private InputSystem m_Input;
     private HotGauge m_HotGauge;
     private MinigameCrab m_MinigameCrab;
+    private IceCreamCount m_IceCreamCount;
 
     // ── FSM ───────────────────────────────────────────────────────────────
     private AnimFSM m_FSM;
@@ -337,13 +507,14 @@ public sealed class AnimationControllerFSM : MonoBehaviour
         m_Input = GetComponent<InputSystem>();
         m_HotGauge = GetComponent<HotGauge>();
         m_MinigameCrab = FindFirstObjectByType<MinigameCrab>();
+        m_IceCreamCount = FindFirstObjectByType<IceCreamCount>();
     }
 
     private void Start()
     {
         m_FSM = new AnimFSM();
 
-        // Build all states (order doesn't matter)
+        // ── Normal states ─────────────────────────────────────────────────
         IdleNormalSt = new AnimIdleNormalState(this, m_Anim, m_FSM);
         IdleHotSt = new AnimIdleHotState(this, m_Anim, m_FSM);
         RunNormalSt = new AnimRunNormalState(this, m_Anim, m_FSM);
@@ -352,6 +523,18 @@ public sealed class AnimationControllerFSM : MonoBehaviour
         JumpHotSt = new AnimJumpHotState(this, m_Anim, m_FSM);
         FallingNormalSt = new AnimFallingNormalState(this, m_Anim, m_FSM);
         FallingHotSt = new AnimFallingHotState(this, m_Anim, m_FSM);
+
+        // ── Icecream states ───────────────────────────────────────────────
+        IdleNormalIcecreamSt = new AnimIdleNormalIcecreamState(this, m_Anim, m_FSM);
+        IdleHotIcecreamSt = new AnimIdleHotIcecreamState(this, m_Anim, m_FSM);
+        RunNormalIcecreamSt = new AnimRunNormalIcecreamState(this, m_Anim, m_FSM);
+        RunHotIcecreamSt = new AnimRunHotIcecreamState(this, m_Anim, m_FSM);
+        JumpNormalIcecreamSt = new AnimJumpNormalIcecreamState(this, m_Anim, m_FSM);
+        JumpHotIcecreamSt = new AnimJumpHotIcecreamState(this, m_Anim, m_FSM);
+        FallingNormalIcecreamSt = new AnimFallingNormalIcecreamState(this, m_Anim, m_FSM);
+        FallingHotIcecreamSt = new AnimFallingHotIcecreamState(this, m_Anim, m_FSM);
+
+        // ── Interrupt states ──────────────────────────────────────────────
         StunnedSt = new AnimStunnedState(this, m_Anim, m_FSM);
         TrappedSt = new AnimTrappedState(this, m_Anim, m_FSM);
 
@@ -360,8 +543,8 @@ public sealed class AnimationControllerFSM : MonoBehaviour
 
     private void Update()
     {
-        RefreshContext();   // gather world-state first
-        m_FSM.Tick();       // then run the FSM
+        RefreshContext();
+        m_FSM.Tick();
     }
 
     /// <summary>
@@ -370,28 +553,31 @@ public sealed class AnimationControllerFSM : MonoBehaviour
     /// </summary>
     private void RefreshContext()
     {
-        // Ground check — same logic as PlayerJump (mirrored, not shared, to avoid coupling)
+        // Ground check
         IsGrounded = Physics2D.OverlapCircle(
             m_GroundCheck.position, m_GroundCheckRadius, m_GroundLayer);
 
-        // Horizontal movement — from InputSystem
+        // Horizontal movement
         IsMoving = Mathf.Abs(m_Input.InputVector.x) > 0.01f;
 
-        // Vertical velocity — from Rigidbody2D (shared with PlayerJump)
+        // Vertical velocity
         VelocityY = m_Rb.linearVelocity.y;
 
-        // Stun — from PlayerMovement
+        // Stun
         IsStunned = m_Movement._IsHit;
 
-        // Trapped — MinigameCrab.isActive blocks movement in PlayerMovement
+        // Trapped
         IsTrapped = m_MinigameCrab != null && m_MinigameCrab.isActive;
 
-        // Hot — from HotGauge
-        // ▶ If your HotGauge field is named differently, change "currentHeat" below.
+        // Hot
+        // ▶ If your HotGauge field is named differently, change "CurrentGauge" below.
         IsHot = m_HotGauge != null && m_HotGauge.CurrentGauge >= m_HotThreshold;
+
+        // Carrying ice cream — true once the player presses E at the IceCreamCount trigger
+        IsCarrying = m_IceCreamCount != null && m_IceCreamCount.HasStarted;
     }
 
-    // ── Editor helpers ────────────────────────────────────────────────────
+    // ── Editor helpers ─────────────────────────────────────────────────────
     private void OnDrawGizmosSelected()
     {
         if (m_GroundCheck == null) return;
@@ -400,7 +586,6 @@ public sealed class AnimationControllerFSM : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    // Handy label in Scene view showing the active animation state name
     private void OnGUI()
     {
         if (m_FSM?.Current == null) return;
