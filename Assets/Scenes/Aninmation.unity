@@ -119,174 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &191235996 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9096258011618183389, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &191236000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191235996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 8.18358e-19
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 921464974
---- !u!1 &274791006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6684421225185989601, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &274791010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274791006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 9.298511e-10
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 438739274
---- !u!1 &525120948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3024223639414011434, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &525120952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525120948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 0.0047193225
-  m_labelHash: 2.5037081e-34
-  m_SpriteKey: 0
-  m_SpriteHash: 866488015
---- !u!1 &606935846 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3238498867851801327, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &606935850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606935846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 2.9092094e-34
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 756715707
---- !u!1 &829294855 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3172756061809629814, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &829294859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829294855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 3.257802e-39
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 745137847
---- !u!1 &956447840 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5825068612896110403, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &956447844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956447840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 3.9361026e-31
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 923781286
---- !u!1 &1116848619 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5745072256676014474, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1116848623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116848619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 0.08523473
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 363259259
---- !u!1 &1161651768 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6530556399447488549, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1161651772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161651768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 1.3966444e-37
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 407921204
 --- !u!1001 &1266221098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -295,22 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 872295493706285554, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      propertyPath: m_labelHash
-      value: 5.5363787e-37
-      objectReference: {fileID: 0}
-    - target: {fileID: 872295493706285554, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      propertyPath: m_SpriteHash
-      value: 132967109
-      objectReference: {fileID: 0}
-    - target: {fileID: 2954305325708407833, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 99286962929372687, guid: e720d447ad9dc344b8023312817fb5ec, type: 3}
-    - target: {fileID: 4668020153185028309, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      propertyPath: m_AutoRebind
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4817448164857343784, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.96
@@ -351,57 +167,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5021806272876867426, guid: 0f6244d181d759f418870b103158165a, type: 3}
+      propertyPath: m_AlwaysUpdate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5914099598563391307, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 6248485332934086430, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.000023725443
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4887419296327807229, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2028289146}
-    - targetCorrespondingSourceObject: {fileID: 5825068612896110403, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 956447844}
-    - targetCorrespondingSourceObject: {fileID: 3238498867851801327, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 606935850}
-    - targetCorrespondingSourceObject: {fileID: 3024223639414011434, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 525120952}
-    - targetCorrespondingSourceObject: {fileID: 3172756061809629814, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 829294859}
-    - targetCorrespondingSourceObject: {fileID: 983367456263827275, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2109477318}
-    - targetCorrespondingSourceObject: {fileID: 9096258011618183389, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 191236000}
-    - targetCorrespondingSourceObject: {fileID: 6530556399447488549, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1161651772}
-    - targetCorrespondingSourceObject: {fileID: 5745072256676014474, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1116848623}
-    - targetCorrespondingSourceObject: {fileID: 2976283175642695674, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1437889293}
-    - targetCorrespondingSourceObject: {fileID: 1460605888908741988, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1513264371}
-    - targetCorrespondingSourceObject: {fileID: 7358287851110013354, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2052045977}
-    - targetCorrespondingSourceObject: {fileID: 6684421225185989601, guid: 0f6244d181d759f418870b103158165a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 274791010}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6244d181d759f418870b103158165a, type: 3}
 --- !u!1 &1321601177
 GameObject:
@@ -494,48 +271,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1437889289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2976283175642695674, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1437889293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437889289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 6.389834e-21
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 465901922
---- !u!1 &1513264367 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1460605888908741988, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1513264371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513264367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 0.0069115306
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 1012071383
 --- !u!1 &1677854363
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +282,7 @@ GameObject:
   - component: {fileID: 1677854366}
   - component: {fileID: 1677854365}
   - component: {fileID: 1677854364}
+  - component: {fileID: 1677854367}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -628,69 +364,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2028289142 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4887419296327807229, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2028289146
+--- !u!114 &1677854367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028289142}
+  m_GameObject: {fileID: 1677854363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 4.565082e-12
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 963392703
---- !u!1 &2052045973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7358287851110013354, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2052045977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052045973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 3.164175e-29
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 340090195
---- !u!1 &2109477314 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 983367456263827275, guid: 0f6244d181d759f418870b103158165a, type: 3}
-  m_PrefabInstance: {fileID: 1266221098}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2109477318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109477314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 3.2027811e-38
-  m_labelHash: 2.7305473e-12
-  m_SpriteKey: 0
-  m_SpriteHash: 948931735
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
