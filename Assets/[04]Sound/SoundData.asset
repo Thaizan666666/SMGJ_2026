@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e486778bbe4c567479067672d404ec62, type: 3}
+  m_Name: SoundData
+  m_EditorClassIdentifier: Assembly-CSharp::SoundData
+  ambients:
+  - id: 
+    clip: {fileID: 0}
+    volume: 0
+  bgms:
+  - id: MainMenu
+    clip: {fileID: 8300000, guid: 95fb2d04430029241a47ecfda3a9f37c, type: 3}
+    volume: 0.3
+  - id: InGame
+    clip: {fileID: 8300000, guid: bd6204769cfa2d14eb4e13b9a0553659, type: 3}
+    volume: 0.3
+  effects:
+  - id: Run
+    clip: {fileID: 8300000, guid: f9e67e38139bc1247a2308727203c1aa, type: 3}
+    volume: 1
+  - id: Jump
+    clip: {fileID: 8300000, guid: 2de7070334347f040a41065e1c940504, type: 3}
+    volume: 0.5
+  - id: Landing
+    clip: {fileID: 8300000, guid: 39bd70d1da1aceb429035b7c6054b09b, type: 3}
+    volume: 0.5
+  - id: WarningBall
+    clip: {fileID: 8300000, guid: d4a61085ee1da6841b069ce3cb51b797, type: 3}
+    volume: 0.5
+  - id: BallHit
+    clip: {fileID: 8300000, guid: 525931bfd6c6d6f419fa14508bfafd7f, type: 3}
+    volume: 0.5
+  - id: JellyFish
+    clip: {fileID: 8300000, guid: b636ebfd8228ec047835b1cb4c1ab9bb, type: 3}
+    volume: 0.5
+  - id: Crab
+    clip: {fileID: 8300000, guid: c82a916376f332c438bc273c64b96575, type: 3}
+    volume: 0.5
+  - id: Pain
+    clip: {fileID: 8300000, guid: 8bea539b9ba34004ab1a1c12f578b923, type: 3}
+    volume: 0.5
+  - id: IceCream
+    clip: {fileID: 8300000, guid: 57ca317cfd35a9346a0410043fbd5425, type: 3}
+    volume: 0.5
+  - id: 10LastMinute
+    clip: {fileID: 8300000, guid: e851221bbe94d4746bf49ae8b34fc0cf, type: 3}
+    volume: 0.5
+  - id: Breathing
+    clip: {fileID: 8300000, guid: 4b1fa2b3e840edc42b49fffee46b6a58, type: 3}
+    volume: 0.5
+  - id: Sunburn
+    clip: {fileID: 8300000, guid: 24dd1bb05587dc14f9093f98843c146f, type: 3}
+    volume: 0.5
+  - id: PickUpItem
+    clip: {fileID: 8300000, guid: 16f19063a199bb041931e14241c95fe0, type: 3}
+    volume: 0.5
+  - id: MrBeast
+    clip: {fileID: 8300000, guid: 2696b2ab60e960746834644c6f2fbea9, type: 3}
+    volume: 0.5
+  - id: SunScreen
+    clip: {fileID: 8300000, guid: fb30857ffa9cdf5419a5ea54f94f297b, type: 3}
+    volume: 0.5
+  - id: UmBrellaHat
+    clip: {fileID: 8300000, guid: e1e8cc4c6a1c16b4f8a964461f6e4c8e, type: 3}
+    volume: 0.5
+  - id: GoodEnding
+    clip: {fileID: 8300000, guid: 66ab91ae3882451458353a8bbc417430, type: 3}
+    volume: 0.5
+  - id: BadEnding
+    clip: {fileID: 8300000, guid: ca700cf686604f048a7298c13649568d, type: 3}
+    volume: 0.5

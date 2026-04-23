@@ -27,6 +27,8 @@ public class TriggerEventCrab : MonoBehaviour
         {
             minigame.StartMinigame();
             _isTrigger = true;
+            ManagerSound.PlayEffect("Pain");
+            ManagerSound.PlayEffect("Crab");
             Debug.Log("-------------------------------------------------------------------------");
         }
     }

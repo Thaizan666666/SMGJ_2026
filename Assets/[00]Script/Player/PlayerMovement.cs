@@ -72,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Store actual physics velocity separately from the max speed cap
         m_CharacterStats.currentVelocityX = newX;
-
         Debug.LogWarning($"MaxSpeed: {m_MaxSpeed}");
     }
 
