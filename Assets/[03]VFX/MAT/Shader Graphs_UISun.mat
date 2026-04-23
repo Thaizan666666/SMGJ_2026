@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _SunPower: 1.5
-    - _SunSlider: 0.7058645
+    - _SunSlider: 0
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

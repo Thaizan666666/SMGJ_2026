@@ -15,6 +15,7 @@ public class ManagerScene : MonoBehaviour
     {
         public const string MainMenu = "Prototype[03]";
         public const string Ending = "Ending";
+        //public const string CutScreen = "CutScreen";
     }
 
     // ───────────────────────────────────────────────
@@ -40,6 +41,7 @@ public class ManagerScene : MonoBehaviour
     public void LoadSunBurnEnding() => LoadScene(Scenes.Ending, EndingUI.SunBurnt);
     public void LoadMainMenu() => LoadScene(Scenes.MainMenu);
     public void LoadGame() => LoadScene(Scenes.MainMenu);
+    //public void LoadCutScreen() => LoadScene(Scenes.CutScreen);
 
     public void LoadScene(string sceneName, string targetUI = "")
     {
