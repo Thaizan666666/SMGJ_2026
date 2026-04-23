@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class MOM : MonoBehaviour
 {
-    public UnityEvent onHappyEnding;
-    public UnityEvent onSadEnding;
+    //public UnityEvent onHappyEnding;
+    //public UnityEvent onSadEnding;
     private IceCreamCount GotIceCream;
 
     private void Start()
@@ -20,11 +20,11 @@ public class MOM : MonoBehaviour
             if(GotIceCream.IsFinished == false)
             {
                 ManagerScene.Instance.LoadHappyEnding();
-                onHappyEnding?.Invoke();
             }
             else
             {
-                onSadEnding?.Invoke();
+                ManagerScene.Instance.LoadMomSadEnding();
+                Debug.Log("---------------------------------------Start Ending");
             }
         }
     }

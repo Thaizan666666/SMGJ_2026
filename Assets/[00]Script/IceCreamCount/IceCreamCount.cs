@@ -45,7 +45,7 @@ public class IceCreamCount : MonoBehaviour
             Debug.Log("End");
             currentTime = 0f;
             isFinished = true;
-            onTimerEnd?.Invoke();
+            //onTimerEnd?.Invoke();
         }
     }
     void OnTriggerEnter2D(Collider2D other)
