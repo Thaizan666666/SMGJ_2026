@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BananaBoat
       objectReference: {fileID: 0}
+    - target: {fileID: 4137863013936736891, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4795060971217235540, guid: db1187ed4a3d0c6419f7810f3fb17fc0, type: 3}
       propertyPath: m_Size.x
       value: 12.309953
