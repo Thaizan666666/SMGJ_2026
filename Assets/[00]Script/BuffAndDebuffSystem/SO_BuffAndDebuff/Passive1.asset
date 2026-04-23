@@ -18,4 +18,4 @@ MonoBehaviour:
   thresholdValueMax: 1
   affectStat: 0
   flatBonus: 0
-  percentBonus: 0
+  percentBonus: 0.7
