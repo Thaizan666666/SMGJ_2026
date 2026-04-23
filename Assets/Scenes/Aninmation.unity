@@ -127,22 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 228928398872497644, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9992236
-      objectReference: {fileID: 0}
-    - target: {fileID: 228928398872497644, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.03939793
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028221349116843826, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.023635117
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028221349116843826, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.9997207
-      objectReference: {fileID: 0}
     - target: {fileID: 2296745400726569475, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -151,21 +135,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3760501354849771430, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: baseHeatIncreaseRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037538870076955118, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_MinigameCrab
-      value: 
-      objectReference: {fileID: 1361419041}
     - target: {fileID: 4037538870076955118, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
       propertyPath: m_IceCreamCount
       value: 
-      objectReference: {fileID: 1660130354}
-    - target: {fileID: 4404263185532702108, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.0000026673076
       objectReference: {fileID: 0}
     - target: {fileID: 6002804887509570372, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -207,25 +179,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7704637411556004309, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99922377
-      objectReference: {fileID: 0}
-    - target: {fileID: 7704637411556004309, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.039393578
-      objectReference: {fileID: 0}
     - target: {fileID: 8798239377114201049, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
       propertyPath: m_Name
       value: 'Player System [Form Animation fsm]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053453908387846582, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.025285112
-      objectReference: {fileID: 0}
-    - target: {fileID: 9053453908387846582, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.9996803
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -493,11 +449,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709241726571145786, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.025283797
+      value: 0.025284236
       objectReference: {fileID: 0}
     - target: {fileID: 4709241726571145786, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.99968034
+      value: -0.9996803
       objectReference: {fileID: 0}
     - target: {fileID: 4817448164857343784, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -621,7 +577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6810920484090848126, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.013182304
+      value: 0.013180291
       objectReference: {fileID: 0}
     - target: {fileID: 6810920484090848126, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -786,17 +742,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1361419041 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4143305268304917600, guid: 9fd396bb5c719fd4fbb718b563f994ef, type: 3}
-  m_PrefabInstance: {fileID: 337400722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b03691e850ec74dbb71ef9006d41ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MinigameCrab
 --- !u!1001 &1526361661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -854,74 +799,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf37a6a3780dca147b254cde7c08694c, type: 3}
---- !u!1001 &1660130353
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 280620791665935743, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_Name
-      value: Icecream Shop
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.7446227
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.622442
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566785370721889914, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
---- !u!114 &1660130354 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 910154805141775819, guid: 64d653c2cd99b24478cb07a6ad232b80, type: 3}
-  m_PrefabInstance: {fileID: 1660130353}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93992f8c578ce9a40a7ff1573c95080a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IceCreamCount
 --- !u!1 &1677854363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,4 +1009,3 @@ SceneRoots:
   - {fileID: 337400722}
   - {fileID: 1869764649}
   - {fileID: 477530013}
-  - {fileID: 1660130353}

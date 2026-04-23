@@ -512,7 +512,7 @@ MonoBehaviour:
   currentDeceleration: 0
   currentSkidDeceleration: 0
   currentVelocityX: 0
-  baseHeatIncreaseRate: 0
+  baseHeatIncreaseRate: 2
   baseHeatDecreaseRate: 3
   currentHeatIncreaseRate: 0
   maxHeatGauge: 100
@@ -642,6 +642,8 @@ MonoBehaviour:
     m_Bits: 64
   m_HotThreshold: 70
   m_Anim: {fileID: 2956816253280153054}
+  m_MinigameCrab: {fileID: 4143305268304917600}
+  m_IceCreamCount: {fileID: 0}
 --- !u!1 &2559814626386155620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,6 +1920,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7360602558867961062}
     m_Modifications:
+    - target: {fileID: 135622778659143184, guid: 0f6244d181d759f418870b103158165a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000026673076
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709241726571145786, guid: 0f6244d181d759f418870b103158165a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.025285112
+      objectReference: {fileID: 0}
     - target: {fileID: 4817448164857343784, guid: 0f6244d181d759f418870b103158165a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
