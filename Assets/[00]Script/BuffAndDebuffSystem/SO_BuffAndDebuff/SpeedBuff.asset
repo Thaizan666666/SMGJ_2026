@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb63799aed9c4b947a8e5bcac3cb07cc, type: 3}
   m_Name: SpeedBuff
   m_EditorClassIdentifier: Assembly-CSharp::TimedEffectData
-  effectId: 101
-  displayName: SpeedBuff
+  effectId: 
+  displayName: Not Use
   duration: 5
   statEntries:
   - stat: 0

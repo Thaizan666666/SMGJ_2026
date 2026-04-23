@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: InstacneReduceHotGauge
   m_EditorClassIdentifier: Assembly-CSharp::InstantEffectData
   effectId: 001
-  displayName: InstacneReduceHotGauge
+  displayName: NOT Use
   stat: 1
   mode: 1
   flatValue: 30
