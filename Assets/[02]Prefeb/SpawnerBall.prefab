@@ -49,5 +49,5 @@ MonoBehaviour:
   spawnOffsetX: 30
   minSpawnY: 2
   maxSpawnY: 6
-  spawnInterval: 2
+  spawnInterval: 10
   spawnChance: 0.5
