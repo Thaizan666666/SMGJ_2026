@@ -48,7 +48,130 @@ public class EndingUIController : MonoBehaviour
 
         uiToShow.SetActive(true);
 
-        Animator anim = uiToShow.GetComponent<Animator>();
+        
+        Animator anim = uiToShow.GetComponentInChildren<Animator>();
+        if (anim != null)
+            anim.SetTrigger(animTrigger);
+        else
+            Debug.LogWarning($"[EndingUIController] No Animator on: {uiToShow.name}");
+
+        // Clear so it doesn't re-trigger if scene reloads
+        ManagerScene.PendingTargetUI = "";
+    }
+
+    [ContextMenu("StartGoodEnding")]
+    public void StartGoodEnding() {
+
+        string target = "HappyEnding";
+
+        if (string.IsNullOrEmpty(target))
+        {
+            Debug.LogWarning("[EndingUIController] No target UI was set.");
+            return;
+        }
+
+        Debug.Log($"[EndingUIController] Activating UI: {target}");
+
+        GameObject uiToShow = target switch
+        {
+            "HappyEnding" => happyEndingUI,
+            "MonSad" => momSadUI,
+            "SunBurnt" => sunBurntUI,
+            _ => null
+        };
+
+        if (uiToShow == null)
+        {
+            Debug.LogWarning($"[EndingUIController] No GameObject assigned for: '{target}'");
+            return;
+        }
+
+        uiToShow.SetActive(true);
+
+
+        Animator anim = uiToShow.GetComponentInChildren<Animator>();
+        if (anim != null)
+            anim.SetTrigger(animTrigger);
+        else
+            Debug.LogWarning($"[EndingUIController] No Animator on: {uiToShow.name}");
+
+        // Clear so it doesn't re-trigger if scene reloads
+        ManagerScene.PendingTargetUI = "";
+    }
+
+    [ContextMenu("MomSadEnd")]
+    public void MomSadEnd()
+    {
+
+        string target = "MonSad";
+
+        if (string.IsNullOrEmpty(target))
+        {
+            Debug.LogWarning("[EndingUIController] No target UI was set.");
+            return;
+        }
+
+        Debug.Log($"[EndingUIController] Activating UI: {target}");
+
+        GameObject uiToShow = target switch
+        {
+            "HappyEnding" => happyEndingUI,
+            "MonSad" => momSadUI,
+            "SunBurnt" => sunBurntUI,
+            _ => null
+        };
+
+        if (uiToShow == null)
+        {
+            Debug.LogWarning($"[EndingUIController] No GameObject assigned for: '{target}'");
+            return;
+        }
+
+        uiToShow.SetActive(true);
+
+
+        Animator anim = uiToShow.GetComponentInChildren<Animator>();
+        if (anim != null)
+            anim.SetTrigger(animTrigger);
+        else
+            Debug.LogWarning($"[EndingUIController] No Animator on: {uiToShow.name}");
+
+        // Clear so it doesn't re-trigger if scene reloads
+        ManagerScene.PendingTargetUI = "";
+    }
+
+    [ContextMenu("SunBurntEnd")]
+    public void SunBurntEnd()
+    {
+
+        string target = "SunBurnt";
+
+        if (string.IsNullOrEmpty(target))
+        {
+            Debug.LogWarning("[EndingUIController] No target UI was set.");
+            return;
+        }
+
+        Debug.Log($"[EndingUIController] Activating UI: {target}");
+
+        GameObject uiToShow = target switch
+        {
+            "HappyEnding" => happyEndingUI,
+            "MonSad" => momSadUI,
+            "SunBurnt" => sunBurntUI,
+            _ => null
+        };
+
+        if (uiToShow == null)
+        {
+            Debug.LogWarning($"[EndingUIController] No GameObject assigned for: '{target}'");
+            return;
+        }
+
+        uiToShow.SetActive(true);
+
+
+        Animator anim = uiToShow.GetComponentInChildren<Animator>();
         if (anim != null)
             anim.SetTrigger(animTrigger);
         else

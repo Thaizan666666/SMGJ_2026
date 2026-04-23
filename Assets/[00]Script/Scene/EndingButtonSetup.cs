@@ -2,17 +2,15 @@
 using UnityEngine.UI;
 public class EndingButtonSetup : MonoBehaviour
 {
+    public Button BTN_Reset;
+    public Button BTN_MainMenu;
+
     void Start()
     {
         // หา ManagerScene จาก Instance
         ManagerScene manager = ManagerScene.Instance;
-
-        // หา Button แต่ละอันด้วยชื่อ แล้วผูก function
-        Button btnReset = GameObject.Find("Reset").GetComponent<Button>();
-        Button btnMainMenu = GameObject.Find("MainMenu").GetComponent<Button>();
-
         // ผูก OnClick
-        btnReset.onClick.AddListener(() => manager.LoadGame());
-        btnMainMenu.onClick.AddListener(() => manager.LoadMainMenu());
+        BTN_Reset.onClick.AddListener(() => manager.LoadGame());
+        BTN_MainMenu.onClick.AddListener(() => manager.LoadMainMenu());
     }
 }
