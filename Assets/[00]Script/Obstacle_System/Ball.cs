@@ -51,6 +51,8 @@ public class Ball : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             Debug.Log("Hit Player!");
+            ManagerSound.PlayEffect("Pain");
+            ManagerSound.PlayEffect("BallHit");
         }
 
         if (col.gameObject.CompareTag("Ground"))
