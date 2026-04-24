@@ -1,11 +1,25 @@
+using System.Collections;
 using UnityEngine;
 using static ManagerSound;
 
 public class playBGM : MonoBehaviour
 {
+    public string BGMID = "";
+    public bool ShoulPlay = false;
+
     private void Start()
     {
-        PlayBGM("InGame",1f);
-        //PlayAmbient("",1f);
+        StopBGM();
+        StopAllLoopEffect();
+
+        if (ShoulPlay)
+            StartCoroutine(DelayPlayBGM(BGMID));
+    }
+
+
+    IEnumerator DelayPlayBGM(string bmgID) {
+
+        yield return new WaitForSeconds(2f);
+        PlayBGM(BGMID, 1f);
     }
 }

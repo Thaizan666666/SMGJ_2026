@@ -22,7 +22,7 @@ MonoBehaviour:
     volume: 0.3
   - id: InGame
     clip: {fileID: 8300000, guid: bd6204769cfa2d14eb4e13b9a0553659, type: 3}
-    volume: 0.394
+    volume: 0.2
   effects:
   - id: Run
     clip: {fileID: 8300000, guid: f9e67e38139bc1247a2308727203c1aa, type: 3}

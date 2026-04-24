@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 7e03213021edd5744b8894455349d7d2
+guid: cc0223be5fd6c3f498d6c9739ece261e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7846149807800057906
-    second: TempLogoGame_0
-  - first:
-      213: -6230047124212458929
-    second: TempLogoGame_1
-  - first:
-      213: 7782796502371917831
-    second: TempLogoGame_2
+      213: 1231574801659471682
+    second: Mainmeun_withname_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TempLogoGame_0
+      name: Mainmeun_withname_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 568
-        width: 63
-        height: 85
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2300c64fdaf13ec60800000000000000
-      internalID: 7846149807800057906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TempLogoGame_1
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 10
-        width: 1033
-        height: 660
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4a5f53162d6a89a0800000000000000
-      internalID: -6230047124212458929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TempLogoGame_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 458
-        width: 36
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 700e7031f2c020c60800000000000000
-      internalID: 7782796502371917831
+      spriteID: 2472c37c1ce671110800000000000000
+      internalID: 1231574801659471682
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TempLogoGame_0: 7846149807800057906
-      TempLogoGame_1: -6230047124212458929
-      TempLogoGame_2: 7782796502371917831
+      Mainmeun_withname_0: 1231574801659471682
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

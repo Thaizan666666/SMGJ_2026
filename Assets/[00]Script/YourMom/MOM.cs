@@ -7,6 +7,7 @@ public class MOM : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject BTN_E;
+    private SetUpMAT stm;
 
     private IceCreamCount GotIceCream;
 
@@ -14,6 +15,7 @@ public class MOM : MonoBehaviour
     {
         GotIceCream = FindFirstObjectByType<IceCreamCount>();
         BTN_E?.SetActive(false);
+        stm = FindFirstObjectByType<SetUpMAT>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,11 +48,13 @@ public class MOM : MonoBehaviour
                 if (!GotIceCream.IsFinished)
                 {
                     PlayEffect("GoodEnding");
+                    stm.ClearScreen();
                     ManagerScene.Instance.LoadHappyEnding();
                 }
                 else
                 {
                     Debug.Log("---------------------------------------Start Ending");
+                    stm.ClearScreen();
                     PlayEffect("BadEnding");
                     ManagerScene.Instance.LoadMomSadEnding();
                 }

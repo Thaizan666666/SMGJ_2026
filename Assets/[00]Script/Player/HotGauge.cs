@@ -21,6 +21,7 @@ public class HotGauge : MonoBehaviour
     public Slider HeatGauge;
 
     public bool IsInCover;
+    private SetUpMAT stm;
 
     // Read-only — other systems read this value, only HotGauge writes it
     public float CurrentGauge => _currentGauge;
@@ -34,6 +35,10 @@ public class HotGauge : MonoBehaviour
         UpdateHeatGauge();
         UpdateHeatUI();
         RelinkStats();
+
+        stm = FindAnyObjectByType<SetUpMAT>();
+        if (stm == null)
+            Debug.LogWarning("can't found stm");
     }
 
     private void Update()
@@ -76,10 +81,11 @@ public class HotGauge : MonoBehaviour
     {
         if (_currentGauge >= _maxGauge)
         {
+            stm.ClearScreen();
             _isGameOver = true;
             StopAllLoopEffect();
-            PlayEffect("Sunburn");
-
+            PlayEffect("BadEnding");
+            
             ManagerScene.Instance.LoadSunBurnEnding();
             
 
