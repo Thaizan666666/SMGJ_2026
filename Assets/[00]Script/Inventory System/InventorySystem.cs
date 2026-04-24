@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static ManagerSound;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private KeyCode UseKey = KeyCode.Q;
     [SerializeField] private Image SlotItem;
     public Sprite emptySprite;
+
+    [SerializeField] private SO_Item_Setting Suncream;
+    [SerializeField] private SO_Item_Setting Monster;
+    [SerializeField] private SO_Item_Setting Hat;
 
     private void Awake()
     {
@@ -52,6 +57,13 @@ public class InventorySystem : MonoBehaviour
             Debug.Log("No item to use.");
             return;
         }
+
+        if (currentItem == Suncream)
+            PlayEffect("SunScreen");
+        if (currentItem == Monster)
+            PlayEffect("MrBeast");
+        if (currentItem == Hat)
+            PlayEffect("UmBrellaHat");
 
         Debug.Log($"Using item: {currentItem.name}");
 

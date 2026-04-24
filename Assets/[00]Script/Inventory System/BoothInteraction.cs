@@ -1,6 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-
+using static ManagerSound;
 public class BoothInteraction : MonoBehaviour
 {
     public SO_Item_Setting Item_Setting;
@@ -61,6 +61,7 @@ public class BoothInteraction : MonoBehaviour
         {
             if (inventorySystem != null && inventorySystem.CanAddItem(Item_Setting))
             {
+                PlayEffect("PickUpItem");
                 isUsed = true;
                 BTN_E.SetActive(false);
                 Cross.SetActive(false);

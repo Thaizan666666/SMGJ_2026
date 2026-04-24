@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static ManagerSound;
 
 public class HotGauge : MonoBehaviour
 {
@@ -76,7 +77,12 @@ public class HotGauge : MonoBehaviour
         if (_currentGauge >= _maxGauge)
         {
             _isGameOver = true;
+            StopAllLoopEffect();
+            PlayEffect("Sunburn");
+
             ManagerScene.Instance.LoadSunBurnEnding();
+            
+
         }
     }
 

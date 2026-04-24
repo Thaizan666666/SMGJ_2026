@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using static ManagerSound;
 
 public class MOM : MonoBehaviour
 {
@@ -37,17 +38,20 @@ public class MOM : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            StopAllLoopEffect();
             if (GotIceCream.HasStarted)
             {
                 BTN_E?.SetActive(false);
 
                 if (!GotIceCream.IsFinished)
                 {
+                    PlayEffect("GoodEnding");
                     ManagerScene.Instance.LoadHappyEnding();
                 }
                 else
                 {
                     Debug.Log("---------------------------------------Start Ending");
+                    PlayEffect("BadEnding");
                     ManagerScene.Instance.LoadMomSadEnding();
                 }
             }

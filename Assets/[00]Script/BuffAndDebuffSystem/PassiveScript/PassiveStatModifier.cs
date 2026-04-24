@@ -10,10 +10,10 @@ public class PassiveStatModifier : ScriptableObject
 
     public ThresholdMode mode;
 
-    [Tooltip("Primary threshold.\nHeatGauge: 0–1 percentage (0.70 = 70%).\nSpeed: flat units (e.g. 3 = 3 units/s).")]
+    [Tooltip("Primary threshold.\nHeatGauge: 0-1 percentage (0.70 = 70%).\nSpeed: flat units (e.g. 3 = 3 units/s).")]
     public float thresholdValue = 0.70f;
 
-    [Tooltip("Only used when mode is Between — upper bound (must be > thresholdValue)")]
+    [Tooltip("Only used when mode is Between - upper bound (must be > thresholdValue)")]
     public float thresholdValueMax = 1f;
 
     [Header("Modifier applied when condition is met")]
@@ -25,4 +25,14 @@ public class PassiveStatModifier : ScriptableObject
     [Range(-1f, 5f)]
     [Tooltip("0.20 = +20%,  -0.30 = -30%")]
     public float percentBonus;
+
+    [Header("Sound — leave empty to skip")]
+    [Tooltip("Effect id from SoundData to play once when condition becomes TRUE")]
+    public string sfxOnActivate;
+
+    [Tooltip("Effect id from SoundData to play once when condition becomes FALSE")]
+    public string sfxOnDeactivate;
+
+    [Tooltip("If true, sfxOnActivate loops while condition is met and stops when it ends")]
+    public bool loopWhileActive = false;
 }

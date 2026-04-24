@@ -23,7 +23,7 @@ public class BlinkingText : MonoBehaviour
 
         InGame = GameObject.Find("Press_Spacebar_to_play").GetComponent<Button>();
 
-        InGame.onClick.AddListener(() => manager.LoadGame());
+        InGame.onClick.AddListener(() => manager.LoadIntro());
     }
     void OnEnable()
     {
@@ -42,6 +42,7 @@ public class BlinkingText : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            ManagerScene.Instance.LoadIntro();
             InGame?.onClick.Invoke();
             StopCoroutine(_blinkRoutine);
         }

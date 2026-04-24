@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using static ManagerSound;
 
 public class BallIndicator : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class BallIndicator : MonoBehaviour
             enabled = false;
             return;
         }
+
+        PlayEffect("WarningBall");
 
         // หา Canvas ถ้าไม่มีสร้างใหม่
         canvas = FindFirstObjectByType<Canvas>();
