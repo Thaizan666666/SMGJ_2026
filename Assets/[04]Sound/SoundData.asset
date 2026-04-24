@@ -19,7 +19,7 @@ MonoBehaviour:
   bgms:
   - id: MainMenu
     clip: {fileID: 8300000, guid: 95fb2d04430029241a47ecfda3a9f37c, type: 3}
-    volume: 0.3
+    volume: 0.2
   - id: InGame
     clip: {fileID: 8300000, guid: bd6204769cfa2d14eb4e13b9a0553659, type: 3}
     volume: 0.2
@@ -29,10 +29,10 @@ MonoBehaviour:
     volume: 1
   - id: Jump
     clip: {fileID: 8300000, guid: 2de7070334347f040a41065e1c940504, type: 3}
-    volume: 0.5
+    volume: 0.1
   - id: Landing
     clip: {fileID: 8300000, guid: 39bd70d1da1aceb429035b7c6054b09b, type: 3}
-    volume: 0.5
+    volume: 0.1
   - id: WarningBall
     clip: {fileID: 8300000, guid: d4a61085ee1da6841b069ce3cb51b797, type: 3}
     volume: 0.5
@@ -78,3 +78,15 @@ MonoBehaviour:
   - id: BadEnding
     clip: {fileID: 8300000, guid: ca700cf686604f048a7298c13649568d, type: 3}
     volume: 0.5
+  - id: WindBlow
+    clip: {fileID: 8300000, guid: b0823f1b2f410cf418c94fc405edb4ef, type: 3}
+    volume: 0.35
+  - id: Tada
+    clip: {fileID: 8300000, guid: 14e119465df2a024a8bd578f65a8b3eb, type: 3}
+    volume: 0.35
+  - id: SadTrumpet
+    clip: {fileID: 8300000, guid: a0bff986ce038674a8ebeedf47fea584, type: 3}
+    volume: 0.35
+  - id: Sigh
+    clip: {fileID: 8300000, guid: a50ce6a4366961745813a6add581462a, type: 3}
+    volume: 0.35

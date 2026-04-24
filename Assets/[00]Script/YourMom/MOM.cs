@@ -8,6 +8,7 @@ public class MOM : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject BTN_E;
     private SetUpMAT stm;
+    private bool canInteract;
 
     private IceCreamCount GotIceCream;
 
@@ -22,6 +23,7 @@ public class MOM : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
+        canInteract = true;
         // Only show BTN_E if the player is actually carrying ice cream
         if (GotIceCream != null && GotIceCream.HasStarted && !GotIceCream.IsFinished)
             BTN_E?.SetActive(true);
@@ -31,6 +33,8 @@ public class MOM : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
+        canInteract = false;
+
         BTN_E?.SetActive(false);
     }
 
@@ -38,6 +42,7 @@ public class MOM : MonoBehaviour
     {
         if (GotIceCream == null) return;
 
+        if(canInteract == true)
         if (Input.GetKeyDown(KeyCode.E))
         {
             StopAllLoopEffect();

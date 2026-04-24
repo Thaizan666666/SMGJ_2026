@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using static ManagerSound;
 
 public class PlayerJump : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class PlayerJump : MonoBehaviour
         HandleGravity();
     }
 
+    private bool m_WasGrounded;
+
     private void CheckGround()
     {
         m_IsGrounded = Physics2D.OverlapCircle(
@@ -42,6 +45,12 @@ public class PlayerJump : MonoBehaviour
             m_GroundCheckRadius,
             m_GroundLayer
         );
+
+        // Just landed this frame
+        if (m_IsGrounded && !m_WasGrounded)
+            PlayEffect("Landing");
+
+        m_WasGrounded = m_IsGrounded;
     }
 
     private void HandleJumpInput()
@@ -50,6 +59,7 @@ public class PlayerJump : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame && m_IsGrounded && !m_Movement._IsHit)
         {
             m_IsJumping = true;
+            PlayEffect("Jump");
             m_JumpTimeCounter = 0f;
             m_Rb.linearVelocity = new Vector2(m_Rb.linearVelocity.x, m_JumpForce);
         }

@@ -1,16 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
+using static ManagerSound;
 
-/// <summary>
-/// Attach this script to the same GameObject as your Animator.
-/// Then in the Animation window, add an Animation Event and select "OnLoadInGame".
-/// 
-/// HOW TO SET UP:
-/// 1. Attach this script to the GameObject that has the Animator
-/// 2. Open the Animation window (Window > Animation > Animation)
-/// 3. Scrub to the frame you want the scene to load
-/// 4. Click the "Add Event" button (small marker icon on the timeline)
-/// 5. In the Inspector, select "OnLoadInGame" from the Function dropdown
-/// </summary>
 public class AnimationEventHandler : MonoBehaviour
 {
     // Called by Animation Event
@@ -19,9 +9,32 @@ public class AnimationEventHandler : MonoBehaviour
         if (ManagerScene.Instance != null)
         {
             ManagerScene.Instance.LoadGame();
-            Debug.Log("Loding Game");
+            Debug.Log("Loading Game");
         }
         else
             Debug.LogWarning("[AnimationEventHandler] ManagerScene.Instance is null.");
     }
+
+    // ── Sound — call these from Animation Events ──────────────────────────
+
+    // One-shot effect    string param = effect id (e.g. "JellyFish")
+    public void PlaySoundEffect(string id) => PlayEffect(id);
+
+    // BGM with default fade    string param = bgm id
+    public void PlayBGMSound(string id) => PlayBGM(id);
+
+    // Stop BGM with default fade
+    public void StopBGMSound(string id) => StopBGM();
+
+    // Start looping effect    string param = effect id
+    public void StartLoopEffect(string id) => LoopEffect(id);
+
+    // Stop looping effect    string param = effect id
+    public void StopLoopSoundEffect(string id) => StopLoopEffect(id);
+
+    // Ambient with default fade    string param = ambient id
+    public void PlayAmbientSound(string id) => PlayAmbient(id);
+
+    // Stop ambient with default fade
+    public void StopAmbientSound(string id) => StopAmbient();
 }

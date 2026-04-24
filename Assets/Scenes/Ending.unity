@@ -637,6 +637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 813444322}
   - component: {fileID: 813444321}
+  - component: {fileID: 813444323}
   m_Layer: 0
   m_Name: sound
   m_TagString: Untagged
@@ -673,6 +674,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &813444323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813444320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787a645d859142345a1c14a3d2066f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RegisterSound
+  soundData: {fileID: 11400000, guid: c816422d4d12cbe428ccef574bafa8d4, type: 2}
 --- !u!1 &840864545
 GameObject:
   m_ObjectHideFlags: 0
