@@ -5,7 +5,7 @@ public class IceCreamIndicator : MonoBehaviour
 {
     private IceCreamCount creamCount;
     private Slider IceCreamSlider;
-    public Sprite emptySprite;
+    
 
     private void Awake()
     {
