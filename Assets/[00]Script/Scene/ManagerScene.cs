@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Security.Cryptography;
 
 public class ManagerScene : MonoBehaviour
 {
@@ -13,9 +14,9 @@ public class ManagerScene : MonoBehaviour
     // ───────────────────────────────────────────────
     public static class Scenes
     {
-        public const string MainMenu = "Prototype[03]";
+        public const string MainMenu = "MainMenu";
         public const string Ending = "Ending";
-        //public const string CutScreen = "CutScreen";
+        public const string InGame = "InGame";
     }
 
     // ───────────────────────────────────────────────
@@ -23,6 +24,7 @@ public class ManagerScene : MonoBehaviour
     // ───────────────────────────────────────────────
     public static class EndingUI
     {
+        public const string Intro = "Intro";
         public const string Happy = "HappyEnding";
         public const string MomSad = "MonSad";
         public const string SunBurnt = "SunBurnt";
@@ -39,9 +41,9 @@ public class ManagerScene : MonoBehaviour
     public void LoadHappyEnding() => LoadScene(Scenes.Ending, EndingUI.Happy);
     public void LoadMomSadEnding() => LoadScene(Scenes.Ending, EndingUI.MomSad);
     public void LoadSunBurnEnding() => LoadScene(Scenes.Ending, EndingUI.SunBurnt);
+    public void LoadIntro() => LoadScene(Scenes.Ending, EndingUI.Intro);
     public void LoadMainMenu() => LoadScene(Scenes.MainMenu);
-    public void LoadGame() => LoadScene(Scenes.MainMenu);
-    //public void LoadCutScreen() => LoadScene(Scenes.CutScreen);
+    public void LoadGame() => LoadScene(Scenes.InGame);
 
     public void LoadScene(string sceneName, string targetUI = "")
     {

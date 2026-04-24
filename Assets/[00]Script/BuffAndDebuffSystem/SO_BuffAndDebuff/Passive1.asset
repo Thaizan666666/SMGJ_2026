@@ -19,3 +19,6 @@ MonoBehaviour:
   affectStat: 0
   flatBonus: 0
   percentBonus: 0.7
+  sfxOnActivate: Breathing
+  sfxOnDeactivate: 
+  loopWhileActive: 1

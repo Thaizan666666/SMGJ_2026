@@ -1,30 +1,68 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using static ManagerSound;
 
 public class MOM : MonoBehaviour
 {
-    //public UnityEvent onHappyEnding;
-    //public UnityEvent onSadEnding;
+    [Header("UI")]
+    [SerializeField] private GameObject BTN_E;
+    private SetUpMAT stm;
+    private bool canInteract;
+
     private IceCreamCount GotIceCream;
 
     private void Start()
     {
         GotIceCream = FindFirstObjectByType<IceCreamCount>();
+        BTN_E?.SetActive(false);
+        stm = FindFirstObjectByType<SetUpMAT>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && GotIceCream.HasStarted == true)
+        if (!other.CompareTag("Player")) return;
+
+        canInteract = true;
+        // Only show BTN_E if the player is actually carrying ice cream
+        if (GotIceCream != null && GotIceCream.HasStarted && !GotIceCream.IsFinished)
+            BTN_E?.SetActive(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        canInteract = false;
+
+        BTN_E?.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (GotIceCream == null) return;
+
+        if(canInteract == true)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(GotIceCream.IsFinished == false)
+            StopAllLoopEffect();
+            if (GotIceCream.HasStarted)
             {
-                ManagerScene.Instance.LoadHappyEnding();
-            }
-            else
-            {
-                ManagerScene.Instance.LoadMomSadEnding();
-                Debug.Log("---------------------------------------Start Ending");
+                BTN_E?.SetActive(false);
+
+                if (!GotIceCream.IsFinished)
+                {
+                    PlayEffect("GoodEnding");
+                    stm.ClearScreen();
+                    ManagerScene.Instance.LoadHappyEnding();
+                }
+                else
+                {
+                    Debug.Log("---------------------------------------Start Ending");
+                    stm.ClearScreen();
+                    PlayEffect("BadEnding");
+                    ManagerScene.Instance.LoadMomSadEnding();
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using static ManagerSound;
 
 public class CoverSystem : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class CoverSystem : MonoBehaviour
         {
             Debug.Log("Player entered the cover (partial)");
 
+            StopLoopEffect("Sunburn");
+
 #if UNITY_EDITOR
             _playerCollider = collision;
 #endif            
@@ -32,6 +35,8 @@ public class CoverSystem : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.CompareTag(_cfg.PlayerTag)) return;
+
+        StopLoopEffect("Sunburn");
 
         float percentage = GetOverlapPercentage(collision);
         HotGauge heatguage = collision.GetComponent<HotGauge>();
@@ -65,7 +70,8 @@ public class CoverSystem : MonoBehaviour
         if (collision.CompareTag(_cfg.PlayerTag))
         {
             Debug.Log("Player exited the cover");
-            
+            LoopEffect("Sunburn");
+
 #if UNITY_EDITOR
             _playerCollider = null;
 #endif

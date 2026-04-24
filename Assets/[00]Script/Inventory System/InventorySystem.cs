@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static ManagerSound;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -7,6 +8,11 @@ public class InventorySystem : MonoBehaviour
     private SO_Item_Setting currentItem;
     [SerializeField] private KeyCode UseKey = KeyCode.Q;
     [SerializeField] private Image SlotItem;
+    public Sprite emptySprite;
+
+    [SerializeField] private SO_Item_Setting Suncream;
+    [SerializeField] private SO_Item_Setting Monster;
+    [SerializeField] private SO_Item_Setting Hat;
 
     private void Awake()
     {
@@ -52,6 +58,13 @@ public class InventorySystem : MonoBehaviour
             return;
         }
 
+        if (currentItem == Suncream)
+            PlayEffect("SunScreen");
+        if (currentItem == Monster)
+            PlayEffect("MrBeast");
+        if (currentItem == Hat)
+            PlayEffect("UmBrellaHat");
+
         Debug.Log($"Using item: {currentItem.name}");
 
         // Apply whichever effect is set on the item
@@ -70,5 +83,14 @@ public class InventorySystem : MonoBehaviour
     public void UpdateUI()
     {
         SlotItem.sprite = currentItem != null ? currentItem.ItemSprite : null;
+        if (currentItem != null)
+        {
+            SlotItem.sprite = currentItem.ItemSprite;
+            SlotItem.gameObject.SetActive(true);
+        }
+        else {
+            SlotItem.sprite = null;
+            SlotItem.gameObject.SetActive(false);
+        }
     }
 }

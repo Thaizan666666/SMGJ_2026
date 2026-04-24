@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject Character;
+
     [Header("Movement Settings")]
     private float m_MaxSpeed;
     private float m_Acceleration;
@@ -58,6 +60,15 @@ public class PlayerMovement : MonoBehaviour
         float inputX = m_Input.InputVector.x;
         float velocityX = m_Rb.linearVelocity.x;
         float targetSpeed = inputX * m_MaxSpeed;
+
+        if (velocityX < 0)
+        {
+            Character.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        if (velocityX > 0)
+        {
+            Character.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
 
         float accel;
         if (inputX == 0)

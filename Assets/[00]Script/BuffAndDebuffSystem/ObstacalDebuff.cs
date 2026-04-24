@@ -1,4 +1,5 @@
 using UnityEngine;
+using static ManagerSound;
 
 public class ObstacalDebuff : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class ObstacalDebuff : MonoBehaviour
         if (em == null) return;
         Debug.LogWarning("have ");
 
+        PlayEffect("JellyFish");
+
         // Timed — refreshes if already active
-        if(slowData != null)
+        if (slowData != null)
         em.ApplyTimed(slowData);
 
         if(heatSurgeData != null)
@@ -23,5 +26,7 @@ public class ObstacalDebuff : MonoBehaviour
         // Instant — fires once, permanent
         if(heatBlastData != null)
         em.ApplyInstant(heatBlastData);
+
+
     }
 }
