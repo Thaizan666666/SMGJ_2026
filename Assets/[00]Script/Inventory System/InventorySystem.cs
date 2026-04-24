@@ -7,6 +7,7 @@ public class InventorySystem : MonoBehaviour
     private SO_Item_Setting currentItem;
     [SerializeField] private KeyCode UseKey = KeyCode.Q;
     [SerializeField] private Image SlotItem;
+    public Sprite emptySprite;
 
     private void Awake()
     {
@@ -70,5 +71,14 @@ public class InventorySystem : MonoBehaviour
     public void UpdateUI()
     {
         SlotItem.sprite = currentItem != null ? currentItem.ItemSprite : null;
+        if (currentItem != null)
+        {
+            SlotItem.sprite = currentItem.ItemSprite;
+            SlotItem.gameObject.SetActive(true);
+        }
+        else {
+            SlotItem.sprite = null;
+            SlotItem.gameObject.SetActive(false);
+        }
     }
 }

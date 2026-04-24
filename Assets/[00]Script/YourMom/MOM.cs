@@ -4,27 +4,52 @@ using UnityEngine.SceneManagement;
 
 public class MOM : MonoBehaviour
 {
-    //public UnityEvent onHappyEnding;
-    //public UnityEvent onSadEnding;
+    [Header("UI")]
+    [SerializeField] private GameObject BTN_E;
+
     private IceCreamCount GotIceCream;
 
     private void Start()
     {
         GotIceCream = FindFirstObjectByType<IceCreamCount>();
+        BTN_E?.SetActive(false);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && GotIceCream.HasStarted == true)
+        if (!other.CompareTag("Player")) return;
+
+        // Only show BTN_E if the player is actually carrying ice cream
+        if (GotIceCream != null && GotIceCream.HasStarted && !GotIceCream.IsFinished)
+            BTN_E?.SetActive(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        BTN_E?.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (GotIceCream == null) return;
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(GotIceCream.IsFinished == false)
+            if (GotIceCream.HasStarted)
             {
-                ManagerScene.Instance.LoadHappyEnding();
-            }
-            else
-            {
-                ManagerScene.Instance.LoadMomSadEnding();
-                Debug.Log("---------------------------------------Start Ending");
+                BTN_E?.SetActive(false);
+
+                if (!GotIceCream.IsFinished)
+                {
+                    ManagerScene.Instance.LoadHappyEnding();
+                }
+                else
+                {
+                    Debug.Log("---------------------------------------Start Ending");
+                    ManagerScene.Instance.LoadMomSadEnding();
+                }
             }
         }
     }
